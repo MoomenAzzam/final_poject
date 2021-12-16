@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_global.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_home.xml" value="0.2703125" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_login.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_profile.xml" value="0.2703125" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_singup.xml" value="0.2703125" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_favorite.xml" value="0.25416666666666665" />
