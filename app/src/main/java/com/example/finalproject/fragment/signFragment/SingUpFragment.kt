@@ -1,4 +1,4 @@
-package com.example.finalproject.fragment
+package com.example.finalproject.fragment.signFragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
