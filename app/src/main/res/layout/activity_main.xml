@@ -15,27 +15,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
+        <android.widget.Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/btn_global"
             android:text="home"
+            android:textColor="@color/main_color"
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/btn_global"
             android:text="favorite"
+            android:textColor="@color/main_color"
+
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <Button
+        <android.widget.Button
             android:id="@+id/btn_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,12 +46,14 @@
             android:background="@drawable/btn_global"
             android:text="profile"
             android:textSize="16sp"
+            android:textColor="@color/main_color"
+
             android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
-        android:name="com.example.finalproject.fragment.homeFragment.ProfileFragment"
+        android:name="com.example.finalproject.fragment.signFragment.LoginFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -95,11 +95,12 @@
         android:id="@+id/btn_singup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="Sign Up"
         android:textColor="#FFEB3B"
         android:textSize="16dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
-        app:layout_constraintLeft_toRightOf="@+id/textView2" />
+        app:layout_constraintStart_toEndOf="@+id/textView2" />
 
     <!--        <android.widget.Button-->
     <!--            android:id="@+id/btn_singup"-->
