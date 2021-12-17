@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-
     android:padding="16dp">
 
 
@@ -17,15 +16,25 @@
         android:layout_marginTop="8dp"
         android:hint="search"
         android:minHeight="48dp"
-        android:background="#FFD0A7"
+        android:background="@drawable/search"
         android:padding="8dp"
-        android:textColor="@color/purple_500"
-        android:textColorHint="@color/purple_500"
+        android:textColor="@color/main_color"
+        android:textColorHint="@color/main_color"
         android:textSize="20sp"
         app:circularflow_defaultRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_search_24" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_view"
@@ -42,8 +51,8 @@
 
     <ImageButton
         android:id="@+id/btn_image_add"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_add"
