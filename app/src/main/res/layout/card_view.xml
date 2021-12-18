@@ -21,7 +21,7 @@
             android:padding="16dp">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imgBookCover"
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
@@ -42,14 +42,14 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/imgBookCover" />
 
             <TextView
                 android:id="@+id/txt_authorName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="txt_bookName"
+                android:text="txt_authorName"
                 android:textColor="#636363"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
