@@ -11,19 +11,23 @@ import com.example.finalproject.model.User
 class DatabaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
+    companion object {
+        const val DATABASE_NAME = "LibraryDB"
+        const val DATABASE_VERSION = 6
+    }
 
     private var db: SQLiteDatabase = this.writableDatabase
 
     override fun onCreate(p0: SQLiteDatabase?) {
         p0!!.execSQL(Book.TABLE_CREATE)
-        p0!!.execSQL(User.TABLE_CREATE)
-        p0!!.execSQL(Favorite.TABLE_CREATE)
+        p0.execSQL(User.TABLE_CREATE)
+        p0.execSQL(Favorite.TABLE_CREATE)
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         p0!!.execSQL("DROP TABLE IF EXISTS ${Book.TABLE_NAME}")
-        p0!!.execSQL("DROP TABLE IF EXISTS ${User.TABLE_NAME}")
-        p0!!.execSQL("DROP TABLE IF EXISTS ${Favorite.TABLE_NAME}")
+        p0.execSQL("DROP TABLE IF EXISTS ${User.TABLE_NAME}")
+        p0.execSQL("DROP TABLE IF EXISTS ${Favorite.TABLE_NAME}")
         onCreate(p0)
     }
 
@@ -144,10 +148,5 @@ class DatabaseHelper(context: Context) :
     }
 
 
-
-    companion object {
-        const val DATABASE_NAME = "LibraryDB"
-        const val DATABASE_VERSION = 1
-    }
 }
 

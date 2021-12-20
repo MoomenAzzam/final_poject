@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.finalproject.MainActivity
 import com.example.finalproject.R
 import com.example.finalproject.adapter.RV_book_adapter
 import com.example.finalproject.database.DatabaseHelper
@@ -45,7 +46,9 @@ class MainFragment : Fragment() {
         })
 
         binding.btnBookAdd.setOnClickListener {
-            //go to add book page which is not yet designed...
+            //go to the add book fragment
+            //MainActivity.swipeFragment(requireActivity(),SOMETHING)
+
         }
 
 

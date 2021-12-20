@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.finalproject.R
 
-class bookDescriptionFragment : Fragment() {
+class BookDescriptionFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
