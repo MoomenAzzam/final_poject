@@ -29,7 +29,7 @@ class RV_book_adapter(var data: ArrayList<Book>): RecyclerView.Adapter<RV_book_a
         holder.cardViewBinding.apply {
             txtBookName.text = data[position].name
             txtAuthorName.text = data[position].author
-            imgBookCover.setImageURI(Uri.parse(data[position].image))
+            imgBookCover.setImageBitmap(data[position].image)
         }
 
 

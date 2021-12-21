@@ -4,9 +4,12 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import com.example.finalproject.model.Book
 import com.example.finalproject.model.Favorite
 import com.example.finalproject.model.User
+import java.io.ByteArrayOutputStream
 
 class DatabaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -34,12 +37,17 @@ class DatabaseHelper(context: Context) :
     //---------------------------------------------------------------------
     //Book table
 
-    fun insertBook(name: String, author: String, description: String, image:String): Boolean {
+    fun insertBook(name: String, author: String, description: String,  category: String, image:Bitmap): Boolean {
         val cv = ContentValues()
         cv.put(Book.COL_NAME, name)
         cv.put(Book.COL_AUTHOR, author)
         cv.put(Book.COL_DESCRIPTION, description)
-        cv.put(Book.COL_IMAGE, image)
+        cv.put(Book.COL_CATEGORY, category)
+
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        image.compress(Bitmap.CompressFormat.JPEG,30,byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+        cv.put(Book.COL_IMAGE, byteArray)
         return db.insert(Book.TABLE_NAME, null, cv) > 0
     }
 
@@ -49,7 +57,9 @@ class DatabaseHelper(context: Context) :
             db.rawQuery("select * from ${Book.TABLE_NAME} order by ${Book.COL_ID} desc", null)
         c.moveToFirst()
         while (!c.isAfterLast) {
-            val s = Book(c.getInt(0), c.getString(1), c.getString(2),c.getString(3), c.getString(4))
+            val byteArray = c.getBlob(5)
+            val bitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.size)
+            val s = Book(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), bitmap)
             books.add(s)
             c.moveToNext()
         }
@@ -61,11 +71,12 @@ class DatabaseHelper(context: Context) :
         return db.delete(Book.TABLE_NAME, "${Book.COL_ID} = $id", null) > 0
     }
 
-    fun updateBook(oldId: Int, name: String, author: String, description: String, image:String): Boolean {
+    fun updateBook(oldId: Int, name: String, author: String, description: String, category: String, image:String): Boolean {
         val cv = ContentValues()
         cv.put(Book.COL_NAME, name)
         cv.put(Book.COL_AUTHOR, author)
         cv.put(Book.COL_DESCRIPTION, description)
+        cv.put(Book.COL_CATEGORY, category)
         cv.put(Book.COL_IMAGE, image)
         return db.update(Book.TABLE_NAME, cv, "${Book.COL_ID} == $oldId", null) > 0
     }
@@ -127,7 +138,9 @@ class DatabaseHelper(context: Context) :
             db.rawQuery("select * from ${Favorite.TABLE_NAME} INNER JOIN ${Book.TABLE_NAME} ON (${Favorite.TABLE_NAME}.${Favorite.COL_BOOK_ID} = ${Book.TABLE_NAME}.${Book.COL_ID}) WHERE ${Favorite.COL_USER_ID} = $userId order by ${Favorite.COL_BOOK_ID} desc", null)
         c.moveToFirst()
         while (!c.isAfterLast) {
-            val s = Book(c.getInt(0), c.getString(1), c.getString(2),c.getString(3), c.getString(4))
+            val byteArray = c.getBlob(5)
+            val bitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.size)
+            val s = Book(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), bitmap)
             favorites.add(s)
             c.moveToNext()
         }

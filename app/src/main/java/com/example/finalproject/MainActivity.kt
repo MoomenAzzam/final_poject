@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    lateinit var imageView:ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
@@ -37,7 +40,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun cameraBtn(){
+    fun cameraBtn(imageView: ImageView){
+        this.imageView = imageView
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(android.Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED
@@ -50,7 +54,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun galleryBtn(){
+    fun galleryBtn(imageView: ImageView){
+        this.imageView = imageView
         val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(i, REQ_GALLERY)
     }
@@ -68,12 +73,12 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == REQ_CAMERA && resultCode == RESULT_OK && data != null) {
 
             val bitmap = data.extras!!.get("data") as Bitmap
-            //binding.imgPerview.setImageBitmap(bitmap)
+            imageView.setImageBitmap(bitmap)
 
         } else if (requestCode == REQ_GALLERY && resultCode == RESULT_OK && data != null) {
             val uri = data.data
             Log.e("hzm", uri.toString())
-            //binding.imgPerview.setImageURI(uri)
+            imageView.setImageURI(uri)
 
             //Uri.parse("tel:052255665")
         }

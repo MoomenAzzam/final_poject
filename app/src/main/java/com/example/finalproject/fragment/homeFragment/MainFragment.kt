@@ -46,8 +46,7 @@ class MainFragment : Fragment() {
         })
 
         binding.btnBookAdd.setOnClickListener {
-            //go to the add book fragment
-            //MainActivity.swipeFragment(requireActivity(),SOMETHING)
+            MainActivity.swipeFragment(requireActivity(),AddBookFragment())
 
         }
 
