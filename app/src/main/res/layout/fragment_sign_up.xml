@@ -123,6 +123,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/circular"
         app:srcCompat="@drawable/image"
+
         app:strokeColor="#68462A"
         app:strokeWidth="3dp" />
 
