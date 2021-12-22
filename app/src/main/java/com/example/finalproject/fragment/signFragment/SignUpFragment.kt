@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.example.finalproject.MainActivity
 import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject.R
+import com.example.finalproject.UserSignActivity
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentSignUpBinding
 
@@ -34,12 +35,12 @@ class SignUpFragment : Fragment() {
                     val rePass = binding.tvPassword.text.toString()
 
                     //To check whether the password in the first field is the same as in the second field
-                    if (pass.equals(rePass)) {
+                    if (pass == rePass) {
                         val db = DatabaseHelper(requireContext())
                         val bitmap = (binding.imgUser.drawable as BitmapDrawable).bitmap
                         db.insertUser(username, email, pass, bitmap)
 
-                        MainActivity.swipeFragment(requireActivity(), SignInFragment())
+                        UserSignActivity.swipeFragment(requireActivity(), SignInFragment())
                     } else {
                         Toast.makeText(
                             context,
@@ -56,10 +57,19 @@ class SignUpFragment : Fragment() {
                 ).show()
         }
 
+
+        binding.btnAddImgFromGallery.setOnClickListener {
+            (requireActivity() as UserSignActivity).galleryBtn(binding.imgUser)
+        }
+
+        binding.btnAddImgFromCamera.setOnClickListener {
+            (requireActivity() as UserSignActivity).cameraBtn(binding.imgUser)
+        }
+
 //******************************************************  signInLink  *********************************************
         // The text that the user will click on if they already have an account
         binding.singInLink.setOnClickListener {
-            MainActivity.swipeFragment(requireActivity(), SignInFragment())
+            UserSignActivity.swipeFragment(requireActivity(), SignInFragment())
         }
 
         return binding.root

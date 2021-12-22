@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject.MainActivity
 import com.example.finalproject.R
+import com.example.finalproject.UserSignActivity
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentSignInBinding
 import com.example.finalproject.databinding.FragmentSignUpBinding
@@ -64,7 +65,7 @@ class SignInFragment : Fragment() {
 
 //************************************************** The event that occurs when you click on the Sign Up text ****************
         binding.btnSingup.setOnClickListener {
-            MainActivity.swipeFragment(requireActivity(), SignUpFragment())
+            UserSignActivity.swipeFragment(requireActivity(), SignUpFragment())
         }
 
 

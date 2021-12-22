@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun openCamera() {
+    private fun openCamera() {
         val i = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         startActivityForResult(i, REQ_CAMERA)
     }
@@ -92,16 +92,13 @@ class MainActivity : AppCompatActivity() {
             val uri = data.data
             Log.e("hzm", uri.toString())
             imageView.setImageURI(uri)
-
-            //Uri.parse("tel:052255665")
         }
     }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
+        grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == REQ_CAMERA) {
