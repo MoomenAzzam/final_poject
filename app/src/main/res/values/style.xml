@@ -2,6 +2,8 @@
 <resources>
     <style name="circular" >
         <item name="cornerSize">50%</item>
-        <item name="backgroundColor">#00FFFFFF</item>
+        <item name="backgroundColor">#FFFFFF</item>
+
+
     </style>
 </resources>

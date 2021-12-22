@@ -26,7 +26,7 @@
 
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/shapestyle"
         android:ems="10"
         android:hint="Name"
@@ -45,14 +45,15 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@drawable/shapestyle"
-        android:drawableEnd="@drawable/ic_baseline_email_24"
+        android:drawableStart="@drawable/ic_baseline_email_24"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
         android:drawablePadding="8dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-
         android:paddingTop="8dp"
+
         android:paddingBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +66,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:background="@drawable/shapestyle"
-        android:drawableEnd="@drawable/ic_baseline_lock_24"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:drawablePadding="8dp"
         android:ems="10"
         android:hint="Password"
@@ -85,7 +87,8 @@
 
         android:layout_marginTop="15dp"
         android:background="@drawable/shapestyle"
-        android:drawableEnd="@drawable/ic_baseline_lock_24"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:drawablePadding="8dp"
         android:ems="10"
         android:hint="Re-Password"
@@ -121,7 +124,17 @@
         app:shapeAppearanceOverlay="@style/circular"
         app:srcCompat="@drawable/image"
 
+        app:strokeColor="#68462A"
         app:strokeWidth="3dp" />
+
+    <ImageButton
+        android:id="@+id/btnAddImgFromCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
+        tools:layout_editor_absoluteY="87dp" />
 
     <ImageButton
         android:id="@+id/btnAddImgFromGallery"
@@ -131,19 +144,9 @@
         android:backgroundTint="#00FFFFFF"
         android:tint="#6E6B6B"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/btnAddImgFromCamera"
         app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
-        tools:layout_editor_absoluteY="176dp" />
-
-    <ImageButton
-        android:id="@+id/btnAddImgFromCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#00FFFFFF"
-        app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
-        tools:layout_editor_absoluteX="146dp"
-        tools:layout_editor_absoluteY="176dp" />
+        tools:layout_editor_absoluteY="81dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

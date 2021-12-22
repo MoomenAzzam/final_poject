@@ -14,7 +14,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.example.finalproject.databinding.ActivityMainBinding
+import com.example.finalproject.fragment.homeFragment.FavoriteFragment
 import com.example.finalproject.fragment.homeFragment.MainFragment
+import com.example.finalproject.fragment.homeFragment.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,6 +39,17 @@ class MainActivity : AppCompatActivity() {
 
 //        swipeFragment(this, MainFragment())
 
+        binding.btnHome.setOnClickListener {
+            swipeFragment(this , MainFragment())
+        }
+
+        binding.btnFavorite.setOnClickListener {
+            swipeFragment(this , FavoriteFragment())
+        }
+
+        binding.btnProfile.setOnClickListener {
+            swipeFragment(this , ProfileFragment())
+        }
     }
 
 
