@@ -151,6 +151,21 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
             <TextView
+                android:id="@+id/textView81"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="ٌRelease year:"
+                android:textColor="#835227"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <TextView
                 android:id="@+id/textview7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -163,7 +178,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+                app:layout_constraintTop_toBottomOf="@+id/textView81" />
 
             <EditText
                 android:id="@+id/bookName"
@@ -261,7 +276,6 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/shelfNumber" />
-
             <EditText
                 android:id="@+id/description"
                 android:layout_width="0dp"
@@ -277,6 +291,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 tools:ignore="TouchTargetSizeCheck" />
+
+            <EditText
+                android:id="@+id/releaseYear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#FFFFFF"
+                android:gravity="start|top"
+                android:hint="Release year"
+                android:inputType="text"
+                android:textColor="#BD804B"
+                android:textColorHint="#FFBD804B"
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView81"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
             <Button
                 android:id="@+id/btn_add"
@@ -297,7 +325,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.42" />
+                app:layout_constraintGuide_percent="0.45" />
 
             <Button
                 android:id="@+id/btn_cancel"
