@@ -4,9 +4,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="category">
-        <item></item>
         <item>Romantic</item>
         <item>Comedy</item>
         <item>Drama</item>
+    </string-array>
+    <string-array name="language">
+        <item>Arabic</item>
+        <item>English</item>
     </string-array>
 </resources>
