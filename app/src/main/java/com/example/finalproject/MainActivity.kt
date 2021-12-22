@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        swipeFragment(this, MainFragment())
+      swipeFragment(this, MainFragment())
 
         binding.btnHome.setOnClickListener {
             swipeFragment(this , MainFragment())

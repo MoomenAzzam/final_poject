@@ -6,9 +6,13 @@ import android.content.DialogInterface
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.finalproject.MainActivity
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.CardViewBinding
+import com.example.finalproject.fragment.homeFragment.AddBookFragment
+import com.example.finalproject.fragment.homeFragment.BookDescriptionFragment
 import com.example.finalproject.model.Book
 
 
@@ -53,6 +57,10 @@ class RV_book_adapter(var data: ArrayList<Book>): RecyclerView.Adapter<RV_book_a
                 show()
             }
             true
+        }
+
+        holder.cardViewBinding.root.setOnClickListener {
+            MainActivity.swipeFragment(context as FragmentActivity, BookDescriptionFragment())
         }
 
     }

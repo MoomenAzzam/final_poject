@@ -13,12 +13,12 @@ import com.example.finalproject.databinding.FragmentSignUpBinding
 
 
 class SignUpFragment : Fragment() {
-     val binding = FragmentSignUpBinding.inflate(layoutInflater)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val singUpView = inflater.inflate(R.layout.fragment_sign_up, container, false)
+        val binding = FragmentSignUpBinding.inflate(layoutInflater)
+
 
         binding.btnSignUp.setOnClickListener {
             //The button that when pressed saves the information of the new user
@@ -54,7 +54,7 @@ class SignUpFragment : Fragment() {
         binding.singInLink.setOnClickListener {
             MainActivity.swipeFragment(requireActivity(),SignInFragment())
         }
-        return singUpView
+        return binding.root
     }
 
 
