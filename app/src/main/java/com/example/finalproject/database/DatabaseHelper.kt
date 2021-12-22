@@ -127,8 +127,23 @@ class DatabaseHelper(context: Context) :
         return db.insert(User.TABLE_NAME, null, cv) > 0
     }
 
+    fun getUser(id: Int): User{
+        val c =
+            db.rawQuery("select * from ${User.TABLE_NAME} WHERE ${User.COL_ID} = $id", null)
+        c.moveToFirst()
+
+        val byteArray = c.getBlob(4)
+        val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+
+        val user = User(c.getInt(0), c.getString(1),
+            c.getString(2), c.getString(3),
+            bitmap)
+        c.close()
+        return user
+    }
+
     fun getAllUsers(): ArrayList<User> {
-        var users = ArrayList<User>()
+        val users = ArrayList<User>()
         val c =
             db.rawQuery("select * from ${User.TABLE_NAME} order by ${User.COL_ID} desc", null)
         c.moveToFirst()
