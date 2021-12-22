@@ -28,7 +28,7 @@ class SignUpFragment : Fragment() {
             if (binding.tvName.text.isNotEmpty() && binding.tvPassword.text.isNotEmpty()
                 && binding.tvRePassword.text.isNotEmpty() && binding.tvEmail.text.isNotEmpty()
             ) {
-                binding.btnSignUp.setOnClickListener {
+              //  binding.btnSignUp.setOnClickListener {
                     val username = binding.tvName.text.toString()
                     val email = binding.tvEmail.text.toString()
                     val pass = binding.tvPassword.text.toString()
@@ -48,7 +48,7 @@ class SignUpFragment : Fragment() {
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-                }
+               // }
             } else
                 Toast.makeText(
                     context,

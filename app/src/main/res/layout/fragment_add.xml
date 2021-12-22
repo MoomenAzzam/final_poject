@@ -238,7 +238,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
-                android:hint="Number fo pages"
+                android:hint="Number of pages"
                 android:paddingTop="8dp"
                 android:textColor="#BD804B"
                 android:textColorHint="#FFBD804B"
@@ -325,7 +325,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.45" />
+                app:layout_constraintGuide_begin="171dp" />
 
             <Button
                 android:id="@+id/btn_cancel"
