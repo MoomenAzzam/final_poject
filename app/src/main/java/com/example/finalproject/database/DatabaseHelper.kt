@@ -37,15 +37,24 @@ class DatabaseHelper(context: Context) :
     //---------------------------------------------------------------------
     //Book table
 
-    fun insertBook(name: String, author: String, description: String,  category: String, image:Bitmap): Boolean {
+    fun insertBook(
+        name: String, category: String, author: String, language: String,
+        numberOfPages: Int, shelfNumber: String, numberOfCopies: Int, releaseYear:Int,
+        description: String, image: Bitmap
+    ): Boolean {
         val cv = ContentValues()
         cv.put(Book.COL_NAME, name)
-        cv.put(Book.COL_AUTHOR, author)
-        cv.put(Book.COL_DESCRIPTION, description)
         cv.put(Book.COL_CATEGORY, category)
+        cv.put(Book.COL_AUTHOR, author)
+        cv.put(Book.COL_LANGUAGE, language)
+        cv.put(Book.COL_NUMBER_OF_PAGES, numberOfPages)
+        cv.put(Book.COL_SHELF_NUMBER, shelfNumber)
+        cv.put(Book.COL_NUMBER_OF_COPIES, numberOfCopies)
+        cv.put(Book.COL_RELEASE_YEAR, releaseYear)
+        cv.put(Book.COL_DESCRIPTION, description)
 
         val byteArrayOutputStream = ByteArrayOutputStream()
-        image.compress(Bitmap.CompressFormat.JPEG,30,byteArrayOutputStream)
+        image.compress(Bitmap.CompressFormat.JPEG, 30, byteArrayOutputStream)
         val byteArray = byteArrayOutputStream.toByteArray()
         cv.put(Book.COL_IMAGE, byteArray)
         return db.insert(Book.TABLE_NAME, null, cv) > 0
@@ -57,9 +66,16 @@ class DatabaseHelper(context: Context) :
             db.rawQuery("select * from ${Book.TABLE_NAME} order by ${Book.COL_ID} desc", null)
         c.moveToFirst()
         while (!c.isAfterLast) {
-            val byteArray = c.getBlob(5)
-            val bitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.size)
-            val s = Book(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), bitmap)
+            val byteArray = c.getBlob(10)
+            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+            val s = Book(
+                c.getInt(0), c.getString(1),
+                c.getString(2), c.getString(3),
+                c.getString(4), c.getInt(5),
+                c.getString(6), c.getInt(7),c.getInt(8),
+                c.getString(9),
+                bitmap
+            )
             books.add(s)
             c.moveToNext()
         }
@@ -71,13 +87,25 @@ class DatabaseHelper(context: Context) :
         return db.delete(Book.TABLE_NAME, "${Book.COL_ID} = $id", null) > 0
     }
 
-    fun updateBook(oldId: Int, name: String, author: String, description: String, category: String, image:String): Boolean {
+    fun updateBook(
+        oldId: Int,
+        name: String,
+        author: String,
+        description: String,
+        category: String,
+        image: Bitmap
+    ): Boolean {
         val cv = ContentValues()
         cv.put(Book.COL_NAME, name)
         cv.put(Book.COL_AUTHOR, author)
         cv.put(Book.COL_DESCRIPTION, description)
         cv.put(Book.COL_CATEGORY, category)
-        cv.put(Book.COL_IMAGE, image)
+
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        image.compress(Bitmap.CompressFormat.JPEG, 30, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+        cv.put(Book.COL_IMAGE, byteArray)
+
         return db.update(Book.TABLE_NAME, cv, "${Book.COL_ID} == $oldId", null) > 0
     }
 
@@ -85,13 +113,18 @@ class DatabaseHelper(context: Context) :
     //---------------------------------------------------------------------
     //User table
 
-    fun insertUser(name: String, email: String, password: String, image:String): Boolean {
+    fun insertUser(name: String, email: String, password: String, image: Bitmap): Boolean {
         val cv = ContentValues()
         cv.put(User.COL_NAME, name)
         cv.put(User.COL_EMAIL, email)
         cv.put(User.COL_PASSWORD, password)
-        cv.put(User.COL_IMAGE, image)
-        return db.insert(User .TABLE_NAME, null, cv) > 0
+
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        image.compress(Bitmap.CompressFormat.JPEG, 30, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+        cv.put(User.COL_IMAGE, byteArray)
+
+        return db.insert(User.TABLE_NAME, null, cv) > 0
     }
 
     fun getAllUsers(): ArrayList<User> {
@@ -100,7 +133,12 @@ class DatabaseHelper(context: Context) :
             db.rawQuery("select * from ${User.TABLE_NAME} order by ${User.COL_ID} desc", null)
         c.moveToFirst()
         while (!c.isAfterLast) {
-            val s = User(c.getInt(0), c.getString(1), c.getString(2),c.getString(3), c.getString(4))
+            val byteArray = c.getBlob(4)
+            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+
+            val s = User(c.getInt(0), c.getString(1),
+                    c.getString(2), c.getString(3),
+                bitmap)
             users.add(s)
             c.moveToNext()
         }
@@ -112,12 +150,23 @@ class DatabaseHelper(context: Context) :
         return db.delete(User.TABLE_NAME, "${User.COL_ID} = $id", null) > 0
     }
 
-    fun updateUser(oldId: Int, name: String, email: String, password: String, image:String): Boolean {
+    fun updateUser(
+        oldId: Int,
+        name: String,
+        email: String,
+        password: String,
+        image: Bitmap
+    ): Boolean {
         val cv = ContentValues()
         cv.put(User.COL_NAME, name)
         cv.put(User.COL_EMAIL, email)
         cv.put(User.COL_PASSWORD, password)
-        cv.put(User.COL_IMAGE, image)
+
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        image.compress(Bitmap.CompressFormat.JPEG, 30, byteArrayOutputStream)
+        val byteArray = byteArrayOutputStream.toByteArray()
+        cv.put(User.COL_IMAGE, byteArray)
+
         return db.update(User.TABLE_NAME, cv, "${User.COL_ID} == $oldId", null) > 0
     }
 
@@ -135,12 +184,22 @@ class DatabaseHelper(context: Context) :
     fun getAllFavoritesForUser(userId: Int): ArrayList<Book> {
         var favorites = ArrayList<Book>()
         val c =
-            db.rawQuery("select * from ${Favorite.TABLE_NAME} INNER JOIN ${Book.TABLE_NAME} ON (${Favorite.TABLE_NAME}.${Favorite.COL_BOOK_ID} = ${Book.TABLE_NAME}.${Book.COL_ID}) WHERE ${Favorite.COL_USER_ID} = $userId order by ${Favorite.COL_BOOK_ID} desc", null)
+            db.rawQuery(
+                "select * from ${Favorite.TABLE_NAME} INNER JOIN ${Book.TABLE_NAME} ON (${Favorite.TABLE_NAME}.${Favorite.COL_BOOK_ID} = ${Book.TABLE_NAME}.${Book.COL_ID}) WHERE ${Favorite.COL_USER_ID} = $userId order by ${Favorite.COL_BOOK_ID} desc",
+                null
+            )
         c.moveToFirst()
         while (!c.isAfterLast) {
-            val byteArray = c.getBlob(5)
-            val bitmap = BitmapFactory.decodeByteArray(byteArray,0,byteArray.size)
-            val s = Book(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), bitmap)
+            val byteArray = c.getBlob(10)
+            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+            val s = Book(
+                c.getInt(0), c.getString(1),
+                c.getString(2), c.getString(3),
+                c.getString(4), c.getInt(5),
+                c.getString(6), c.getInt(7),c.getInt(8),
+                c.getString(9),
+                bitmap
+            )
             favorites.add(s)
             c.moveToNext()
         }
@@ -152,12 +211,18 @@ class DatabaseHelper(context: Context) :
         var favorites = ArrayList<Favorite>()
         val c =
             db.rawQuery(
-                "select * from ${Favorite.TABLE_NAME} WHERE ${Favorite.COL_USER_ID} = $userId AND ${Favorite.COL_BOOK_ID} = $bookId", null)
+                "select * from ${Favorite.TABLE_NAME} WHERE ${Favorite.COL_USER_ID} = $userId AND ${Favorite.COL_BOOK_ID} = $bookId",
+                null
+            )
         return c.count > 0
     }
 
-        fun deleteFavorite(userId: Int, bookId: Int): Boolean {
-        return db.delete(Favorite.TABLE_NAME, "${Favorite.COL_USER_ID} = $userId AND ${Favorite.COL_BOOK_ID} = $bookId", null) > 0
+    fun deleteFavorite(userId: Int, bookId: Int): Boolean {
+        return db.delete(
+            Favorite.TABLE_NAME,
+            "${Favorite.COL_USER_ID} = $userId AND ${Favorite.COL_BOOK_ID} = $bookId",
+            null
+        ) > 0
     }
 
 
