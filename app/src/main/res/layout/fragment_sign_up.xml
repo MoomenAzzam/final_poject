@@ -6,16 +6,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:backgroundTint="#00FFFFFF">
 
     <Button
         android:id="@+id/btnSignUp"
 
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="59dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/btn_login"
         android:text="signup"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +26,7 @@
 
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
+        android:layout_marginTop="200dp"
         android:background="@drawable/shapestyle"
         android:ems="10"
         android:hint="Name"
@@ -83,8 +82,8 @@
     <EditText
         android:id="@+id/tvRePassword"
 
-        android:layout_height="wrap_content"
         android:layout_width="320dp"
+        android:layout_height="wrap_content"
 
         android:layout_marginTop="15dp"
         android:background="@drawable/shapestyle"
@@ -102,33 +101,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPassword"
         tools:ignore="Autofill,MissingConstraints" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgPerson"
-
-        android:layout_width="100sp"
-        android:layout_height="100dp"
-        android:layout_centerInParent="true"
-        android:layout_margin="5dp"
-        android:layout_marginTop="16dp"
-        android:adjustViewBounds="true"
-        android:background="#00FFFFFF"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toStartOf="@+id/btnAddImg"
-        app:layout_constraintHorizontal_bias="0.704"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btnAddImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#00FFFFFF"
-        app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="291dp"
-        tools:layout_editor_absoluteY="105dp" />
-
     <TextView
         android:id="@+id/singInLink"
         android:layout_width="wrap_content"
@@ -140,6 +112,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circular"
+        app:srcCompat="@drawable/image"
+        app:strokeColor="#68462A"
+        app:strokeWidth="3dp" />
+
+    <ImageButton
+        android:id="@+id/btnAddImgFromCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
+        tools:layout_editor_absoluteY="87dp" />
+
+    <ImageButton
+        android:id="@+id/btnAddImgFromGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:backgroundTint="#00FFFFFF"
+        android:tint="#6E6B6B"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/btnAddImgFromCamera"
+        app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
+        tools:layout_editor_absoluteY="81dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
