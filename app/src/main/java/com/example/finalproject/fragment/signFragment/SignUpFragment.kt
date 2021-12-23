@@ -28,27 +28,30 @@ class SignUpFragment : Fragment() {
             if (binding.tvName.text.isNotEmpty() && binding.tvPassword.text.isNotEmpty()
                 && binding.tvRePassword.text.isNotEmpty() && binding.tvEmail.text.isNotEmpty()
             ) {
-              //  binding.btnSignUp.setOnClickListener {
-                    val username = binding.tvName.text.toString()
-                    val email = binding.tvEmail.text.toString()
-                    val pass = binding.tvPassword.text.toString()
-                    val rePass = binding.tvPassword.text.toString()
+                val username = binding.tvName.text.toString()
+                val email = binding.tvEmail.text.toString()
+                val pass = binding.tvPassword.text.toString()
+                val rePass = binding.tvPassword.text.toString()
 
-                    //To check whether the password in the first field is the same as in the second field
-                    if (pass == rePass) {
-                        val db = DatabaseHelper(requireContext())
-                        val bitmap = (binding.imgUser.drawable as BitmapDrawable).bitmap
-                        db.insertUser(username, email, pass, bitmap)
-
-                        UserSignActivity.swipeFragment(requireActivity(), SignInFragment())
+                //To check whether the password in the first field is the same as in the second field
+                if (pass == rePass) {
+                    val db = DatabaseHelper(requireContext())
+                    val bitmap = (binding.imgUser.drawable as BitmapDrawable).bitmap
+                    if (db.insertUser(username, email, pass, bitmap)) {
+                        Toast.makeText(context, "Register succeeded", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(
-                            context,
-                            "Please verify that the password is correct",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(context, "Register failed", Toast.LENGTH_SHORT).show()
                     }
-               // }
+
+                    UserSignActivity.swipeFragment(requireActivity(), SignInFragment())
+                } else {
+                    Toast.makeText(
+                        context,
+                        "Please verify that the password is correct",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
             } else
                 Toast.makeText(
                     context,
@@ -58,17 +61,18 @@ class SignUpFragment : Fragment() {
         }
 
 
-        binding.btnAddImgFromGallery.setOnClickListener {
+        binding.btnAddImgFromGallery.setOnClickListener{
             (requireActivity() as UserSignActivity).galleryBtn(binding.imgUser)
         }
 
-        binding.btnAddImgFromCamera.setOnClickListener {
+
+        binding.btnAddImgFromCamera.setOnClickListener{
             (requireActivity() as UserSignActivity).cameraBtn(binding.imgUser)
         }
 
 //******************************************************  signInLink  *********************************************
         // The text that the user will click on if they already have an account
-        binding.singInLink.setOnClickListener {
+        binding.singInLink.setOnClickListener{
             UserSignActivity.swipeFragment(requireActivity(), SignInFragment())
         }
 

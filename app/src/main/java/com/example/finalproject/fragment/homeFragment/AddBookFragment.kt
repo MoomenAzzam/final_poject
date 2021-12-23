@@ -52,8 +52,9 @@ class AddBookFragment : Fragment() {
                 //After making sure that all this data is correct, we include this information in the database
             if(test){
                     val db = DatabaseHelper(requireActivity())
+                val bitmap = (binding.imgBook.drawable as BitmapDrawable).bitmap
                     if(db.insertBook(bookName,category,authorName,language,
-                            pagesNum.toInt(),shelfNumber,copiesNum.toInt(),releaseYear.toInt(),description,)) {//image <--------
+                            pagesNum.toInt(),shelfNumber,copiesNum.toInt(),releaseYear.toInt(),description,bitmap)) {
                         Toast.makeText(context, "Adding the book succeeded", Toast.LENGTH_SHORT).show()
                     }else
                         Toast.makeText(context, "Adding the book failed", Toast.LENGTH_SHORT).show()
