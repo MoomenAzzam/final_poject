@@ -11,14 +11,14 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        hide status par
-//        requestWindowFeature(Window.FEATURE_NO_TITLE)
-//        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//            WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_splash)
 //            hide action par
-//        supportActionBar?.hide()
+        supportActionBar?.hide()
         Handler().postDelayed({val i = Intent(this,UserSignActivity::class.java)
             startActivity(i)
-            finish()},2000)
+            finish()},3000)
     }
 }

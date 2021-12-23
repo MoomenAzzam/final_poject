@@ -31,17 +31,40 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <android.widget.Button
-                android:id="@+id/btn_edit_image"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/btn_add"
-                android:text="edit image"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgBook" />
+            <ImageButton
+                android:id="@+id/btnAddImgFromCamera"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#00FFFFFF"
+                android:minHeight="48dp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toBottomOf="@+id/imgBook"
+                app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/btnAddImgFromGallery"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#00FFFFFF"
+                app:layout_constraintStart_toEndOf="@+id/btnAddImgFromCamera"
+                app:layout_constraintTop_toBottomOf="@+id/imgBook"
+                app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+<!--            <android.widget.Button-->
+<!--                android:id="@+id/btn_edit_image"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:background="@drawable/btn_add"-->
+<!--                android:text="edit image"-->
+<!--                android:textColor="@color/white"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/imgBook" />-->
 
             <TextView
                 android:id="@+id/textView5"
@@ -55,7 +78,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_edit_image" />
+                app:layout_constraintTop_toBottomOf="@+id/btnAddImgFromCamera" />
 
             <TextView
                 android:id="@+id/textView23"
@@ -301,7 +324,7 @@
 
             <android.widget.Button
                 android:id="@+id/btn_add"
-                android:layout_width="0dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
@@ -323,7 +346,7 @@
 
             <android.widget.Button
                 android:id="@+id/btn_cancel"
-                android:layout_width="0dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/btn_add"
