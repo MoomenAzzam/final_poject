@@ -35,6 +35,7 @@ class UserSignActivity : AppCompatActivity() {
         if (hasSignedInBefore) {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
+            finish()
         }
     }
 

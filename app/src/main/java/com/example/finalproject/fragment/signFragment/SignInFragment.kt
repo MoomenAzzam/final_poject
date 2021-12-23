@@ -45,6 +45,7 @@ class SignInFragment : Fragment() {
                         editor.putInt("userId", user.id).apply()
                         val i = Intent(this.requireContext(), MainActivity::class.java)
                         startActivity(i)
+                        requireActivity().finish()
                         break
 
                     }

@@ -34,33 +34,23 @@ class AddBookFragment : Fragment() {
                 val category = binding.spinnerCategory.selectedItem.toString()
                 val authorName = binding.authorName.text.toString()
                 val language = binding.spinnerLanguage.selectedItem.toString()
-                val pagesNum = binding.numberOfPages.text.toString()
+                val pagesNum = binding.numberOfPages.text.toString().toInt()
                 val shelfNumber = binding.shelfNumber.text.toString()
-                val copiesNum = binding.NumberOfCopiesOfBooks.text.toString()
-                val releaseYear = binding.releaseYear.text.toString()
+                val copiesNum = binding.NumberOfCopiesOfBooks.text.toString().toInt()
+                val releaseYear = binding.releaseYear.text.toString().toInt()
                 val description = binding.description.text.toString()
 
-                //Verify that digit entries are actually numbers
-                var test = true
-                try{
-                    val pagesIsANumber = parseInt(pagesNum)
-                    val copiesIsANumber = parseInt(copiesNum)
-                    val yearIsNumber = parseInt(releaseYear)
-                }catch (e: NumberFormatException){
-                    test = false
-                }
+
                 //After making sure that all this data is correct, we include this information in the database
-            if(test){
+
                     val db = DatabaseHelper(requireActivity())
                 val bitmap = (binding.imgBook.drawable as BitmapDrawable).bitmap
                     if(db.insertBook(bookName,category,authorName,language,
-                            pagesNum.toInt(),shelfNumber,copiesNum.toInt(),releaseYear.toInt(),description,bitmap)) {
+                            pagesNum,shelfNumber,copiesNum,releaseYear,description,bitmap)) {
                         Toast.makeText(context, "Adding the book succeeded", Toast.LENGTH_SHORT).show()
                     }else
                         Toast.makeText(context, "Adding the book failed", Toast.LENGTH_SHORT).show()
 
-            }else
-              Toast.makeText(context, "Please make sure that the numbers are entered correctly", Toast.LENGTH_SHORT).show()
 
         }else
          Toast.makeText(context, "Please make sure to fill in all fields", Toast.LENGTH_SHORT).show()
