@@ -317,10 +317,25 @@
                 android:id="@+id/btn_edit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/btn_add"
                 android:text="edit"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toBottomOf="@+id/description" />
+
+            <Button
+                android:id="@+id/btn_metaphor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/btn_add"
+                android:text="metaphor"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintEnd_tostartf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/description" />
 
             <androidx.constraintlayout.widget.Guideline
@@ -329,6 +344,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent=".38" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".50" />
 
 
 
