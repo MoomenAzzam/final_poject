@@ -5,18 +5,13 @@ import android.content.Context
 import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finalproject.R
 import com.example.finalproject.database.DatabaseHelper
-import com.example.finalproject.databinding.BookCardViewBinding
 import com.example.finalproject.databinding.BorrowerCardViewBinding
-import com.example.finalproject.fragment.homeFragment.BookDescriptionFragment
-import com.example.finalproject.model.Book
 import com.example.finalproject.model.Borrower
 
-class Borrower_adapter(var data: ArrayList<Borrower>) :
-    RecyclerView.Adapter<Borrower_adapter.MyViewHolder>() {
+class BorrowerAdapter(var data: ArrayList<Borrower>) :
+    RecyclerView.Adapter<BorrowerAdapter.MyViewHolder>() {
     lateinit var context: Context
     private var initialData = data
 

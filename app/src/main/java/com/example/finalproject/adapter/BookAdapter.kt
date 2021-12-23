@@ -14,7 +14,7 @@ import com.example.finalproject.fragment.homeFragment.BookDescriptionFragment
 import com.example.finalproject.model.Book
 
 
-class RV_book_adapter(var data: ArrayList<Book>): RecyclerView.Adapter<RV_book_adapter.MyViewHolder>() {
+class BookAdapter(var data: ArrayList<Book>): RecyclerView.Adapter<BookAdapter.MyViewHolder>() {
     lateinit var context: Context
     private var initialData = data
 

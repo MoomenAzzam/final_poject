@@ -9,8 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.finalproject.MainActivity
-import com.example.finalproject.R
-import com.example.finalproject.adapter.RV_book_adapter
+import com.example.finalproject.adapter.BookAdapter
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentMainBinding
 import android.widget.AdapterView
@@ -27,7 +26,7 @@ class MainFragment : Fragment() {
         val db = DatabaseHelper(requireContext())
 
         //the recycler view adapter
-        val adapter = RV_book_adapter(db.getAllBooks())
+        val adapter = BookAdapter(db.getAllBooks())
         binding.rvView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvView.adapter = adapter
 
@@ -42,7 +41,7 @@ class MainFragment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                (binding.rvView.adapter as RV_book_adapter).search(s.toString())
+                (binding.rvView.adapter as BookAdapter).search(s.toString())
             }
 
         })
@@ -52,9 +51,9 @@ class MainFragment : Fragment() {
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
                 if (binding.spinner.selectedItem.toString() == "All") {
                     //get all books
-                    (binding.rvView.adapter as RV_book_adapter).searchCategory("")
+                    (binding.rvView.adapter as BookAdapter).searchCategory("")
                 }else{
-                    (binding.rvView.adapter as RV_book_adapter).searchCategory(binding.spinner.selectedItem.toString())
+                    (binding.rvView.adapter as BookAdapter).searchCategory(binding.spinner.selectedItem.toString())
                 }
             }
 
