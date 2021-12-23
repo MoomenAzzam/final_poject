@@ -51,6 +51,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Password :"
+        android:textColor="@color/green"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
     <EditText
         android:id="@+id/tv_name"
         android:layout_width="0dp"
@@ -94,6 +105,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6" />
 
+    <EditText
+        android:id="@+id/tvPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:enabled="false"
+        android:inputType="textPassword"
+        android:text="13/13/2013"
+        android:textColor="@color/green"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline6" />
+
     <android.widget.Button
         android:id="@+id/btn_logout"
         android:layout_width="0dp"
@@ -126,7 +151,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".25" />
+        app:layout_constraintGuide_percent=".35" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
