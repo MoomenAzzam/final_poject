@@ -7,39 +7,51 @@
         <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/drawable/btn_login.xml" value="0.26615384615384613" />
         <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/drawable/btn_singup.xml" value="0.26615384615384613" />
         <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/activity_user_sign.xml" value="0.25416666666666665" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/borrower_card_view.xml" value="0.25416666666666665" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/card_view.xml" value="0.25416666666666665" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_add.xml" value="0.264" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_book_description.xml" value="0.264" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_borrower.xml" value="0.25416666666666665" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_favorite.xml" value="0.25416666666666665" />
         <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_favorite2.xml" value="0.25416666666666665" />
         <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_login.xml" value="0.264" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_main.xml" value="0.176" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_main.xml" value="0.264" />
         <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_profile2.xml" value="0.25416666666666665" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_sign_in.xml" value="0.25416666666666665" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/layout/fragment_sing_up.xml" value="0.25416666666666665" />
-        <entry key="..\:/Universtity/year2/semster1/Android/final_poject/app/src/main/res/menu/option_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/drawable-v24/ic_baseline_email_24.xml" value="0.2203125" />
-        <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/drawable-v24/shapestyle.xml" value="0.2203125" />
-        <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
-        <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/layout/fragment_sing_up.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable-v24/ic_baseline_add_photo_alternate_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable-v24/ic_baseline_email_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable-v24/ic_baseline_lock_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable-v24/shapestyle.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_add.xml" value="0.2703125" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_global.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_home.xml" value="0.2703125" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_login.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_profile.xml" value="0.2703125" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/btn_singup.xml" value="0.2703125" />
-        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/ic_addbook.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/ic_baseline_add_photo_alternate_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/ic_baseline_date_range_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/ic_person_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/image_in_profile.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/search.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/drawable/search4.xml" value="0.2703125" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/activity_splash.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/activity_user_sign.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/book_card_view.xml" value="0.4" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/borrower_card_view.xml" value="0.264" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/card_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_add.xml" value="0.4" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_book_description.xml" value="0.22872827081427263" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_borrower.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_favorite.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_favorite2.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_login.xml" value="0.4" />
-        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_profile.xml" value="0.4" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_main.xml" value="0.4" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_metaphor.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_profile2.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_sign_in.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/layout/fragment_sing_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/menu/option_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/sa/AndroidStudioProjects/finalproject/app/src/main/res/menu/options_menu.xml" value="0.264" />
       </map>
     </option>
