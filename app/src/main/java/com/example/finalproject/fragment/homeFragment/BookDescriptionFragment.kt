@@ -43,19 +43,51 @@ class BookDescriptionFragment : Fragment() {
         binding.spinnerCategory.setText(book.category)
         binding.authorName.setText(book.author)
         binding.spinnerLanguage.setText(book.language)
-        binding.numberOfPages.setText(book.numberOfPages)
+        binding.numberOfPages.setText(book.numberOfPages.toString())
         binding.shelfNumber.setText(book.shelfNumber)
-        binding.NumberOfCopiesOfBooks.setText(book.numberOfCopies)
-        binding.releaseYear.setText(book.releaseYear)
+        binding.NumberOfCopiesOfBooks.setText(book.numberOfCopies.toString())
+        binding.releaseYear.setText(book.releaseYear.toString())
         binding.description.setText(book.description)
 
 
         //Add the book to your favourites
-        binding.addToFavorite.setOnClickListener {
+        var isFavorite = db.isFavorite(MainActivity.userId, bookId!!)
 
-            db.insertFavorite(MainActivity.userId, bookId!!)
+        fun setFavortieBtnText() {
+            if (isFavorite) {
+                binding.addToFavorite.text = "Remove from Favorite"
+            } else {
+                binding.addToFavorite.text = "Add to Favorite"
+            }
         }
 
+        //setting the starting text to the favorite btn
+        setFavortieBtnText()
+
+        binding.addToFavorite.setOnClickListener {
+
+            if (!isFavorite) {
+                //add to favorite
+                if (db.insertFavorite(MainActivity.userId, bookId!!)) {
+                    Toast.makeText(requireContext(), "Added to Favorite", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "error while adding to favorite", Toast.LENGTH_SHORT).show()
+                }
+            }else{
+                //remove from favorite
+                if(db.deleteFavorite(MainActivity.userId, bookId!!)) {
+                    Toast.makeText(requireContext(), "Removed to Favorite", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "error while Removing from favorite", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            isFavorite = !isFavorite
+            setFavortieBtnText()
+        }
+
+
+        //edit & save button
         binding.btnEdit.setOnClickListener {
             isEditing = !isEditing
 
@@ -73,8 +105,7 @@ class BookDescriptionFragment : Fragment() {
                 binding.description.isEnabled = true
 
 
-
-            }else{
+            } else {
                 //pressed the save btn
                 if (binding.bookName.text.toString()
                         .isNotEmpty() && binding.spinnerCategory.text.toString().isNotEmpty() &&
