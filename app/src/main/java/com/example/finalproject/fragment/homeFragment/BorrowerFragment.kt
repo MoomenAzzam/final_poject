@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.adapter.BookAdapter
@@ -40,6 +41,26 @@ class BorrowerFragment : Fragment() {
         val adapter = BorrowerAdapter(db.getAllBorrowersForBook(bookId!!))
         binding.rvMetaphor.layoutManager = LinearLayoutManager(requireContext())
         binding.rvMetaphor.adapter = adapter
+        
+        binding.btnAddBorrower.setOnClickListener { 
+            if(binding.tvBorrowerName.text.isNotEmpty()){
+                if(db.insertBorrower(bookId!!, binding.tvBorrowerName.text.toString())){
+                    Toast.makeText(requireContext(), "Added borrower", Toast.LENGTH_SHORT).show()
+                    var book = db.getBook(bookId!!)
+                    //decrease the number of copies by one
+                    db.updateBook(book.id,book.name,book.category,book.author,book.language,book.numberOfPages,book.shelfNumber,
+                        book.numberOfCopies - 1 ,book.releaseYear,book.description,book.image)
+                    //update the data
+                    (binding.rvMetaphor.adapter as BorrowerAdapter).notifyDataSetChanged()
+
+                    binding.tvBorrowerName.setText("")
+                }else{
+                    Toast.makeText(requireContext(), "Error while adding the borrower", Toast.LENGTH_SHORT).show()
+                }
+            }else{
+                Toast.makeText(requireContext(), "Pleas fill the name field", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         return binding.root
     }
