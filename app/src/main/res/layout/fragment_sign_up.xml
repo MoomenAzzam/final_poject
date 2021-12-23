@@ -6,106 +6,153 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:backgroundTint="#00FFFFFF">
+    android:background="@color/main_back_ground"
+    android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnSignUp"
-
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        android:background="@drawable/btn_login"
-        android:text="signup"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgUser"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image" />
+
+    <ImageButton
+        android:id="@+id/btnAddImgFromCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#00FFFFFF"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/imgUser"
+        app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btnAddImgFromGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/imgUser"
+        app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/tvName"
-
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/shapestyle"
-        android:ems="10"
+        android:layout_marginTop="72dp"
+        android:drawableEnd="@drawable/ic_person_24"
         android:hint="Name"
         android:inputType="textPersonName"
-        android:paddingLeft="10dp"
+        android:minHeight="48dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
+        android:textColor="@color/main_color"
+        android:textColorHint="@color/main_color"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imgUser" />
 
-    <EditText
-        android:id="@+id/tvEmail"
-
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/shapestyle"
-        android:drawableStart="@drawable/ic_baseline_email_24"
-        android:drawableLeft="@drawable/ic_baseline_email_24"
-        android:drawablePadding="8dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:paddingTop="8dp"
-
-        android:paddingBottom="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRePassword" />
 
     <EditText
         android:id="@+id/tvPassword"
-
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/shapestyle"
-        android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:drawableLeft="@drawable/ic_baseline_lock_24"
-        android:drawablePadding="8dp"
-        android:ems="10"
+        android:layout_marginTop="8dp"
+        android:drawableEnd="@drawable/ic_baseline_lock_24"
         android:hint="Password"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
+        android:textColor="@color/main_color"
+        android:textColorHint="@color/main_color"
+        android:backgroundTint="@color/white"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <EditText
         android:id="@+id/tvRePassword"
-
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="15dp"
-        android:background="@drawable/shapestyle"
-        android:drawableStart="@drawable/ic_baseline_lock_24"
-        android:drawableLeft="@drawable/ic_baseline_lock_24"
-        android:drawablePadding="8dp"
-        android:ems="10"
+        android:layout_marginTop="8dp"
+        android:drawableEnd="@drawable/ic_baseline_lock_24"
         android:hint="Re-Password"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
+        android:textColor="@color/main_color"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPassword"
         tools:ignore="Autofill,MissingConstraints" />
 
+
+    <EditText
+        android:id="@+id/tvEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableEnd="@drawable/ic_baseline_email_24"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/main_color"
+        android:textColorHint="@color/main_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRePassword" />
+
+
+    <EditText
+        android:id="@+id/tvdob"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:drawableEnd="@drawable/ic_baseline_date_range_24"
+        android:hint="Date of barth day"
+        android:inputType="date"
+        android:minHeight="48dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/main_color"
+        android:textColorHint="@color/main_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_login"
+        android:text="signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvdob" />
+
     <TextView
         android:id="@+id/singInLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:text="Already Have an Account ?"
         android:textColor="@color/main_color"
         android:textStyle="bold"
@@ -113,40 +160,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgUser"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circular"
-        app:srcCompat="@drawable/image"
-
-        app:strokeColor="#68462A"
-        app:strokeWidth="3dp" />
-
-    <ImageButton
-        android:id="@+id/btnAddImgFromCamera"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_add_a_photo_24" />
-
-    <ImageButton
-        android:id="@+id/btnAddImgFromGallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:backgroundTint="#00FFFFFF"
-        android:tint="#6E6B6B"
-        app:layout_constraintEnd_toEndOf="@+id/imgUser"
-        app:layout_constraintStart_toEndOf="@+id/btnAddImgFromCamera"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24" />
-
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

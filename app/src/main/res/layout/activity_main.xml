@@ -47,13 +47,12 @@
             android:text="profile"
             android:textSize="16sp"
             android:textColor="@color/main_color"
-
             android:textStyle="bold" />
     </LinearLayout>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.example.finalproject.fragment.homeFragment.AddBookFragment"
+        android:name="com.example.finalproject.fragment.signFragment.SignUpFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
