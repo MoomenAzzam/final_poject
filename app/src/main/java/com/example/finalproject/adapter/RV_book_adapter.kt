@@ -3,16 +3,13 @@ package com.example.finalproject.adapter
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.finalproject.MainActivity
 import com.example.finalproject.R
 import com.example.finalproject.database.DatabaseHelper
-import com.example.finalproject.databinding.CardViewBinding
-import com.example.finalproject.fragment.homeFragment.AddBookFragment
+import com.example.finalproject.databinding.BookCardViewBinding
 import com.example.finalproject.fragment.homeFragment.BookDescriptionFragment
 import com.example.finalproject.model.Book
 
@@ -21,12 +18,12 @@ class RV_book_adapter(var data: ArrayList<Book>): RecyclerView.Adapter<RV_book_a
     lateinit var context: Context
     private var initialData = data
 
-    class MyViewHolder(val cardViewBinding: CardViewBinding): RecyclerView.ViewHolder(cardViewBinding.root)
+    class MyViewHolder(val cardViewBinding: BookCardViewBinding): RecyclerView.ViewHolder(cardViewBinding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         context = parent.context
-        val binding : CardViewBinding
-                = CardViewBinding.inflate(LayoutInflater.from(context),parent,false)
+        val binding : BookCardViewBinding
+                = BookCardViewBinding.inflate(LayoutInflater.from(context),parent,false)
         return MyViewHolder(binding)
     }
 

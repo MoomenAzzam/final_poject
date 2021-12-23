@@ -230,17 +230,15 @@ class DatabaseHelper(context: Context) :
             )
         c.moveToFirst()
         while (!c.isAfterLast) {
-            for(i in 0..13){
-                Log.e("g", "${c.getColumnName(i)}")
-            }
-            val byteArray = c.getBlob(11)
+
+            val byteArray = c.getBlob(12)
             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
             val s = Book(
-                c.getInt(1), c.getString(2),
-                c.getString(3), c.getString(4),
-                c.getString(5), c.getInt(6),
-                c.getString(7), c.getInt(8),c.getInt(9),
-                c.getString(10),
+                c.getInt(1), c.getString(3),
+                c.getString(4), c.getString(5),
+                c.getString(6), c.getInt(7),
+                c.getString(8), c.getInt(9),c.getInt(10),
+                c.getString(11),
                 bitmap
             )
             favorites.add(s)
