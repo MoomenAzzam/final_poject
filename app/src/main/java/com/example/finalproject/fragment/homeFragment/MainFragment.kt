@@ -13,6 +13,8 @@ import com.example.finalproject.R
 import com.example.finalproject.adapter.RV_book_adapter
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentMainBinding
+import android.widget.AdapterView
+
 
 class MainFragment : Fragment() {
 
@@ -26,11 +28,11 @@ class MainFragment : Fragment() {
 
         //the recycler view adapter
         val adapter = RV_book_adapter(db.getAllBooks())
-        binding.rvView.layoutManager = GridLayoutManager(requireContext(),2)
+        binding.rvView.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvView.adapter = adapter
 
         //searching for book
-        binding.txtSearch.addTextChangedListener(object :TextWatcher{
+        binding.txtSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
@@ -45,13 +47,29 @@ class MainFragment : Fragment() {
 
         })
 
+        //searching using category
+        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
+                if (binding.spinner.selectedItem.toString() == "all") {
+                    //get all books
+                    (binding.rvView.adapter as RV_book_adapter).searchCategory("")
+                }else{
+                    (binding.rvView.adapter as RV_book_adapter).searchCategory(binding.spinner.selectedItem.toString())
+                }
+            }
+
+            override fun onNothingSelected(adapterView: AdapterView<*>?) {
+                return
+            }
+        }
+
         binding.btnBookAdd.setOnClickListener {
-            MainActivity.swipeFragment(requireActivity(),AddBookFragment())
+            MainActivity.swipeFragment(requireActivity(), AddBookFragment())
 
         }
 
         binding.root.setOnClickListener {
-            MainActivity.swipeFragment(requireActivity(),BookDescriptionFragment())
+            MainActivity.swipeFragment(requireActivity(), BookDescriptionFragment())
         }
 
         return binding.root

@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val REQ_CAMERA = 100
         const val REQ_GALLERY = 200
+        var userId = -1
 
         fun swipeFragment(activity: FragmentActivity, fragment: Fragment) {
             activity.supportFragmentManager.beginTransaction()
@@ -35,6 +36,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val prefs = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
+        userId = prefs.getInt("userId", -1)
 
       swipeFragment(this, MainFragment())
 
