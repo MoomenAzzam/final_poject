@@ -27,7 +27,7 @@ class BookDescriptionFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            bookId = it.getInt(BOOK_ID)
+            this.bookId = it.getInt(BOOK_ID)
         }
     }
 
@@ -87,7 +87,7 @@ class BookDescriptionFragment : Fragment() {
                 if(test){
                     val db = DatabaseHelper(requireActivity())
                     val img = (binding.imgBook as BitmapDrawable).bitmap
-                    db.updateBook(bookId , bookName,authorName,description, category, img)
+                    db.updateBook(bookId!!, bookName,authorName,description, category, img)
 
                 }else
                     Toast.makeText(context, "Please make sure that the numbers are entered correctly", Toast.LENGTH_SHORT).show()
