@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import com.example.finalproject.model.Book
 import com.example.finalproject.model.Borrower
 import com.example.finalproject.model.Favorite
@@ -19,7 +20,7 @@ class DatabaseHelper(context: Context) :
 
     companion object {
         const val DATABASE_NAME = "LibraryDB"
-        const val DATABASE_VERSION = 8
+        const val DATABASE_VERSION = 9
     }
 
     private var db: SQLiteDatabase = this.writableDatabase
@@ -65,6 +66,23 @@ class DatabaseHelper(context: Context) :
         return db.insert(Book.TABLE_NAME, null, cv) > 0
     }
 
+    fun getBook(id:Int): Book {
+        val c =
+            db.rawQuery("select * from ${Book.TABLE_NAME} WHERE ${Book.COL_ID} = $id", null)
+        c.moveToFirst()
+            val byteArray = c.getBlob(10)
+            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+            val book = Book(
+                c.getInt(0), c.getString(1),
+                c.getString(2), c.getString(3),
+                c.getString(4), c.getInt(5),
+                c.getString(6), c.getInt(7),c.getInt(8),
+                c.getString(9),
+                bitmap)
+        c.close()
+        return book
+    }
+
     fun getAllBooks(): ArrayList<Book> {
         var books = ArrayList<Book>()
         val c =
@@ -79,8 +97,7 @@ class DatabaseHelper(context: Context) :
                 c.getString(4), c.getInt(5),
                 c.getString(6), c.getInt(7),c.getInt(8),
                 c.getString(9),
-                bitmap
-            )
+                bitmap)
             books.add(s)
             c.moveToNext()
         }
@@ -213,14 +230,17 @@ class DatabaseHelper(context: Context) :
             )
         c.moveToFirst()
         while (!c.isAfterLast) {
-            val byteArray = c.getBlob(10)
+            for(i in 0..13){
+                Log.e("g", "${c.getColumnName(i)}")
+            }
+            val byteArray = c.getBlob(11)
             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
             val s = Book(
-                c.getInt(0), c.getString(1),
-                c.getString(2), c.getString(3),
-                c.getString(4), c.getInt(5),
-                c.getString(6), c.getInt(7),c.getInt(8),
-                c.getString(9),
+                c.getInt(1), c.getString(2),
+                c.getString(3), c.getString(4),
+                c.getString(5), c.getInt(6),
+                c.getString(7), c.getInt(8),c.getInt(9),
+                c.getString(10),
                 bitmap
             )
             favorites.add(s)

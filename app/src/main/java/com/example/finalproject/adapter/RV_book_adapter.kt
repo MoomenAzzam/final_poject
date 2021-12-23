@@ -60,10 +60,10 @@ class RV_book_adapter(var data: ArrayList<Book>): RecyclerView.Adapter<RV_book_a
             true
         }
 
-//        holder.cardViewBinding.root.setOnClickListener {
-//            (context as FragmentActivity).supportFragmentManager.beginTransaction()
-//                .replace(R.id.fragmentContainerView, BookDescriptionFragment.newInstance(data[position].id)).commit()
-//        }
+        holder.cardViewBinding.root.setOnClickListener {
+            (context as FragmentActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView, BookDescriptionFragment.newInstance(data[position].id)).commit()
+        }
 
     }
 
