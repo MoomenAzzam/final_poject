@@ -113,6 +113,16 @@ class BookDescriptionFragment : Fragment() {
                 //pressed the save btn
                 binding.btnEdit.text = "edit"
 
+                binding.bookName.isEnabled = false
+                binding.spinnerCategory.isEnabled = false
+                binding.authorName.isEnabled = false
+                binding.spinnerLanguage.isEnabled = false
+                binding.numberOfPages.isEnabled = false
+                binding.shelfNumber.isEnabled = false
+                binding.NumberOfCopiesOfBooks.isEnabled = false
+                binding.releaseYear.isEnabled = false
+                binding.description.isEnabled = false
+
                 if (binding.bookName.text.toString()
                         .isNotEmpty() && binding.spinnerCategory.text.toString().isNotEmpty() &&
                     binding.authorName.text.toString()
