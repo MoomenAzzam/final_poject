@@ -19,7 +19,7 @@ class DatabaseHelper(context: Context) :
 
     companion object {
         const val DATABASE_NAME = "LibraryDB"
-        const val DATABASE_VERSION = 6
+        const val DATABASE_VERSION = 7
     }
 
     private var db: SQLiteDatabase = this.writableDatabase
@@ -28,12 +28,14 @@ class DatabaseHelper(context: Context) :
         p0!!.execSQL(Book.TABLE_CREATE)
         p0.execSQL(User.TABLE_CREATE)
         p0.execSQL(Favorite.TABLE_CREATE)
+        p0.execSQL(Borrower.TABLE_CREATE)
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         p0!!.execSQL("DROP TABLE IF EXISTS ${Book.TABLE_NAME}")
         p0.execSQL("DROP TABLE IF EXISTS ${User.TABLE_NAME}")
         p0.execSQL("DROP TABLE IF EXISTS ${Favorite.TABLE_NAME}")
+        p0.execSQL("DROP TABLE IF EXISTS ${Borrower.TABLE_NAME}")
         onCreate(p0)
     }
 
@@ -251,8 +253,9 @@ class DatabaseHelper(context: Context) :
     //borrower table
 
 
-    fun insertBorrower(name: String): Boolean {
+    fun insertBorrower(bookId: Int, name: String): Boolean {
         val cv = ContentValues()
+        cv.put(Borrower.COL_BOOK_ID, bookId)
         cv.put(Borrower.COL_NAME, name)
 
         val calendar = Calendar.getInstance()
@@ -265,15 +268,16 @@ class DatabaseHelper(context: Context) :
         return db.insert(Borrower.TABLE_NAME, null, cv) > 0
     }
 
-    fun getAllBorrowers(): ArrayList<Borrower> {
+    fun getAllBorrowersForBook(bookId: Int): ArrayList<Borrower> {
         var borrowers = ArrayList<Borrower>()
         val c =
-            db.rawQuery("select * from ${Borrower.TABLE_NAME} order by ${Borrower.COL_ID} desc", null)
+            db.rawQuery("select * from ${Borrower.TABLE_NAME} WHERE ${Borrower.COL_BOOK_ID} = $bookId" +
+                    " order by ${Borrower.COL_ID} desc", null)
         c.moveToFirst()
         while (!c.isAfterLast) {
             val s = Borrower(
-                c.getInt(0), c.getString(1),
-                c.getString(2))
+                c.getInt(0), c.getInt(1),c.getString(2),
+                c.getString(3))
             borrowers.add(s)
             c.moveToNext()
         }
