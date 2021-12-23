@@ -1,6 +1,7 @@
 package com.example.finalproject.fragment.signFragment
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import com.example.finalproject.R
 import com.example.finalproject.UserSignActivity
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentSignUpBinding
+import java.util.*
 
 
 class SignUpFragment : Fragment() {
@@ -32,12 +34,13 @@ class SignUpFragment : Fragment() {
                 val email = binding.tvEmail.text.toString()
                 val pass = binding.tvPassword.text.toString()
                 val rePass = binding.tvPassword.text.toString()
+                val dob = binding.tvdob.text.toString()
 
                 //To check whether the password in the first field is the same as in the second field
                 if (pass == rePass) {
                     val db = DatabaseHelper(requireContext())
                     val bitmap = (binding.imgUser.drawable as BitmapDrawable).bitmap
-                    if (db.insertUser(username, email, pass, bitmap)) {
+                    if (db.insertUser(username, email, pass, dob, bitmap)) {
                         Toast.makeText(context, "Register succeeded", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(context, "Register failed", Toast.LENGTH_SHORT).show()
@@ -68,6 +71,20 @@ class SignUpFragment : Fragment() {
 
         binding.btnAddImgFromCamera.setOnClickListener{
             (requireActivity() as UserSignActivity).cameraBtn(binding.imgUser)
+        }
+
+        binding.tvdob.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+            val month = calendar.get(Calendar.MONTH)
+            val year = calendar.get(Calendar.YEAR)
+
+            // val formatter = SimpleDateFormat("d/M/yyyy EE", Locale.ENGLISH)
+            val datePicker = DatePickerDialog(requireContext(),{ _, y, m, d ->
+                binding.tvdob.setText("$y:${m+1}:$d")
+            },year,month,day)
+            datePicker.show()
+
         }
 
 //******************************************************  signInLink  *********************************************

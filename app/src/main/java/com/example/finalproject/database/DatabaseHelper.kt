@@ -113,11 +113,12 @@ class DatabaseHelper(context: Context) :
     //---------------------------------------------------------------------
     //User table
 
-    fun insertUser(name: String, email: String, password: String, image: Bitmap): Boolean {
+    fun insertUser(name: String, email: String, password: String,dob: String, image: Bitmap): Boolean {
         val cv = ContentValues()
         cv.put(User.COL_NAME, name)
         cv.put(User.COL_EMAIL, email)
         cv.put(User.COL_PASSWORD, password)
+        cv.put(User.COL_DOB, dob)
 
         val byteArrayOutputStream = ByteArrayOutputStream()
         image.compress(Bitmap.CompressFormat.JPEG, 30, byteArrayOutputStream)
@@ -132,12 +133,12 @@ class DatabaseHelper(context: Context) :
             db.rawQuery("select * from ${User.TABLE_NAME} WHERE ${User.COL_ID} = $id", null)
         c.moveToFirst()
 
-        val byteArray = c.getBlob(4)
+        val byteArray = c.getBlob(5)
         val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
 
         val user = User(c.getInt(0), c.getString(1),
             c.getString(2), c.getString(3),
-            bitmap)
+            c.getString(4), bitmap)
         c.close()
         return user
     }
@@ -148,12 +149,12 @@ class DatabaseHelper(context: Context) :
             db.rawQuery("select * from ${User.TABLE_NAME} order by ${User.COL_ID} desc", null)
         c.moveToFirst()
         while (!c.isAfterLast) {
-            val byteArray = c.getBlob(4)
+            val byteArray = c.getBlob(5)
             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
 
             val s = User(c.getInt(0), c.getString(1),
                     c.getString(2), c.getString(3),
-                bitmap)
+                c.getString(4), bitmap)
             users.add(s)
             c.moveToNext()
         }
@@ -170,12 +171,14 @@ class DatabaseHelper(context: Context) :
         name: String,
         email: String,
         password: String,
+        dob: String,
         image: Bitmap
     ): Boolean {
         val cv = ContentValues()
         cv.put(User.COL_NAME, name)
         cv.put(User.COL_EMAIL, email)
         cv.put(User.COL_PASSWORD, password)
+        cv.put(User.COL_DOB, dob)
 
         val byteArrayOutputStream = ByteArrayOutputStream()
         image.compress(Bitmap.CompressFormat.JPEG, 30, byteArrayOutputStream)

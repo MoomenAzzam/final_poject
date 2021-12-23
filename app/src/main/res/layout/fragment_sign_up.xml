@@ -128,6 +128,7 @@
         android:hint="Date of barth day"
         android:inputType="date"
         android:minHeight="48dp"
+        android:focusable="false"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:backgroundTint="@color/white"
