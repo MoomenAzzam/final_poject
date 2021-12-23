@@ -7,9 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.example.finalproject.model.Book
+import com.example.finalproject.model.Borrower
 import com.example.finalproject.model.Favorite
 import com.example.finalproject.model.User
 import java.io.ByteArrayOutputStream
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DatabaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -243,6 +246,44 @@ class DatabaseHelper(context: Context) :
         ) > 0
     }
 
+
+    //---------------------------------------------------------------------
+    //borrower table
+
+
+    fun insertBorrower(name: String): Boolean {
+        val cv = ContentValues()
+        cv.put(Borrower.COL_NAME, name)
+
+        val calendar = Calendar.getInstance()
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val month = calendar.get(Calendar.MONTH)
+        val year = calendar.get(Calendar.YEAR)
+        val date = "$year:${month+1}:$day"
+
+        cv.put(Borrower.COL_BORROW_DATE, date)
+        return db.insert(Borrower.TABLE_NAME, null, cv) > 0
+    }
+
+    fun getAllBorrowers(): ArrayList<Borrower> {
+        var borrowers = ArrayList<Borrower>()
+        val c =
+            db.rawQuery("select * from ${Borrower.TABLE_NAME} order by ${Borrower.COL_ID} desc", null)
+        c.moveToFirst()
+        while (!c.isAfterLast) {
+            val s = Borrower(
+                c.getInt(0), c.getString(1),
+                c.getString(2))
+            borrowers.add(s)
+            c.moveToNext()
+        }
+        c.close()
+        return borrowers
+    }
+
+    fun deleteBorrower(id: Int): Boolean {
+        return db.delete(Borrower.TABLE_NAME, "${Borrower.COL_ID} = $id", null) > 0
+    }
 
 }
 
