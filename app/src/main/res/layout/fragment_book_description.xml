@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".fragment.homeFragment.BookDescriptionFragment">
 
 
@@ -18,7 +17,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
             <ImageView
                 android:id="@+id/imgBook"
@@ -237,11 +237,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
+                android:enabled="false"
                 android:hint="Number of pages"
                 android:inputType="number"
                 android:paddingTop="8dp"
                 android:textColor="#BD804B"
-                android:enabled="false"
                 android:textColorHint="#FFBD804B"
                 android:textSize="20sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
@@ -254,12 +254,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:inputType="number"
-                android:hint="Shelf Number"
-                android:textColorHint="#FFBD804B"
-                android:textColor="#BD804B"
-                android:textSize="20sp"
                 android:enabled="false"
+                android:hint="Shelf Number"
+                android:inputType="number"
+                android:textColor="#BD804B"
+                android:textColorHint="#FFBD804B"
+                android:textSize="20sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -269,29 +269,30 @@
                 android:id="@+id/NumberOfCopiesOfBooks"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#FFFFFF"
-                android:hint="Number of copies of books "
-                android:textColor="#BD804B"
                 android:enabled="false"
+                android:hint="Number of copies of books "
+                android:inputType="number"
+                android:textColor="#BD804B"
                 android:textColorHint="#FFBD804B"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/shelfNumber" />
+
             <EditText
                 android:id="@+id/description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
                 android:ems="10"
+                android:enabled="false"
                 android:gravity="start|top"
                 android:hint="Description"
                 android:inputType="textMultiLine"
                 android:textColor="#BD804B"
-                android:enabled="false"
                 android:textColorHint="#FFBD804B"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textview7"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -303,9 +304,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
+                android:enabled="false"
                 android:gravity="start|top"
                 android:hint="Release year"
-                android:enabled="false"
                 android:inputType="text"
                 android:textColor="#BD804B"
                 android:textColorHint="#FFBD804B"
@@ -323,7 +324,7 @@
                 android:text="edit"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
-                app:layout_constraintTop_toBottomOf="@+id/description" />
+                app:layout_constraintTop_toBottomOf="@+id/textview7" />
 
             <Button
                 android:id="@+id/btn_metaphor"
@@ -334,9 +335,8 @@
                 android:background="@drawable/btn_add"
                 android:text="metaphor"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
-                app:layout_constraintEnd_tostartf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description" />
+                app:layout_constraintTop_toBottomOf="@+id/textview7" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline3"
@@ -344,16 +344,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent=".38" />
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent=".50" />
-
-
-
-
 
 
             <!--            <TextView-->
