@@ -81,7 +81,7 @@ class SignUpFragment : Fragment() {
 
             // val formatter = SimpleDateFormat("d/M/yyyy EE", Locale.ENGLISH)
             val datePicker = DatePickerDialog(requireContext(),{ _, y, m, d ->
-                binding.tvdob.setText("$y:${m+1}:$d")
+                binding.tvdob.setText("$y/${m+1}/$d")
             },year,month,day)
             datePicker.show()
 
