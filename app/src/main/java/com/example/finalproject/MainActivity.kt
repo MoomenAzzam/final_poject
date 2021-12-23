@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -17,6 +19,8 @@ import com.example.finalproject.databinding.ActivityMainBinding
 import com.example.finalproject.fragment.homeFragment.FavoriteFragment
 import com.example.finalproject.fragment.homeFragment.MainFragment
 import com.example.finalproject.fragment.homeFragment.ProfileFragment
+import kotlin.system.exitProcess
+
 class MainActivity : AppCompatActivity() {
 
     companion object {
@@ -28,9 +32,10 @@ class MainActivity : AppCompatActivity() {
             activity.supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView, fragment).commit()
         }
+
     }
 
-    lateinit var imageView:ImageView
+    lateinit var imageView: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,23 +45,27 @@ class MainActivity : AppCompatActivity() {
         val prefs = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
         userId = prefs.getInt("userId", -1)
 
-      swipeFragment(this, MainFragment())
+        swipeFragment(this, MainFragment())
 
         binding.btnHome.setOnClickListener {
-            swipeFragment(this , MainFragment())
+            swipeFragment(this, MainFragment())
         }
 
         binding.btnFavorite.setOnClickListener {
-            swipeFragment(this , FavoriteFragment())
+            swipeFragment(this, FavoriteFragment())
         }
 
         binding.btnProfile.setOnClickListener {
-            swipeFragment(this , ProfileFragment())
+            swipeFragment(this, ProfileFragment())
         }
     }
 
 
-    fun cameraBtn(imageView: ImageView){
+    //------------------------------------------------------------------------------------
+    //camera and gallery buttons
+
+
+    fun cameraBtn(imageView: ImageView) {
         this.imageView = imageView
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(android.Manifest.permission.CAMERA)
@@ -70,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun galleryBtn(imageView: ImageView){
+    fun galleryBtn(imageView: ImageView) {
         this.imageView = imageView
         val i = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(i, REQ_GALLERY)
@@ -101,16 +110,44 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray) {
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if (requestCode == REQ_CAMERA) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openCamera()
-            }else {
+            } else {
                 Toast.makeText(this, "Access denied", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+
+    //-----------------------------------------------------------------------------------
+    //options menu
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.option_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.logout -> {
+                Toast.makeText(this, "logged out", Toast.LENGTH_SHORT).show()
+                val prefs = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
+                val editor = prefs.edit()
+                editor.putBoolean("hasSignedInBefore", false).apply()
+                val i = Intent(this, UserSignActivity::class.java)
+                startActivity(i)
+            }
+            R.id.exit -> {
+                Toast.makeText(this, "Exited", Toast.LENGTH_SHORT).show()
+                exitProcess(0)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
