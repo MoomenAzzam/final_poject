@@ -42,7 +42,15 @@ class BookDescriptionFragment : Fragment() {
 
         val book = db.getBook(bookId!!)
         binding.bookName.setText(book.name)
-        // TODO: do the same for all data
+        binding.spinnerCategory.setText(book.category)
+        binding.authorName.setText(book.author)
+        binding.spinnerLanguage.setText(book.language)
+        binding.numberOfPages.setText(book.numberOfPages)
+        binding.shelfNumber.setText(book.shelfNumber)
+        binding.NumberOfCopiesOfBooks.setText(book.numberOfCopies)
+        binding.releaseYear.setText(book.releaseYear)
+        binding.description.setText(book.description)
+
 
         //Add the book to your favourites
         binding.addToFavorite.setOnClickListener {
