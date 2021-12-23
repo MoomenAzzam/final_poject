@@ -77,6 +77,14 @@ class RV_book_adapter(var data: ArrayList<Book>): RecyclerView.Adapter<RV_book_a
         notifyDataSetChanged()
     }
 
+    fun searchCategory(category: String){
+        val newArray = initialData.filter { book ->
+            book.category == category
+        }
+        data = newArray as ArrayList<Book>
+        notifyDataSetChanged()
+    }
+
 
 
 }
