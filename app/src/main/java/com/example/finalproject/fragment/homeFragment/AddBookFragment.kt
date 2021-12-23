@@ -67,6 +67,11 @@ class AddBookFragment : Fragment() {
 
     }
 
+//When you press this button, it returns to the interface from which it came, which is the main and cancels the addition process
+        binding.btnCancel.setOnClickListener {
+            MainActivity.swipeFragment(requireActivity(),MainFragment())
+        }
+
         /*
         this is how to open camera
         (requireActivity() as MainActivity).cameraBtn(binding.imgBook)

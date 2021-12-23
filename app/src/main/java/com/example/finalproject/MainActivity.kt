@@ -17,7 +17,6 @@ import com.example.finalproject.databinding.ActivityMainBinding
 import com.example.finalproject.fragment.homeFragment.FavoriteFragment
 import com.example.finalproject.fragment.homeFragment.MainFragment
 import com.example.finalproject.fragment.homeFragment.ProfileFragment
-
 class MainActivity : AppCompatActivity() {
 
     companion object {

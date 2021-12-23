@@ -50,6 +50,9 @@ class MainFragment : Fragment() {
 
         }
 
+        binding.root.setOnClickListener {
+            MainActivity.swipeFragment(requireActivity(),BookDescriptionFragment())
+        }
 
         return binding.root
     }
