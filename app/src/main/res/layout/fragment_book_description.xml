@@ -30,9 +30,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/addToFavorite"
                 android:layout_width="0dp"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:background="@drawable/btn_add"
@@ -49,7 +50,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="Book Name :"
-                android:textColor="#835227"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +64,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="Category :"
-                android:textColor="#835227"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +79,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="Author Name :"
-                android:textColor="#835227"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +93,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="Language :"
-                android:textColor="#835227"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +107,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="Number Of Pages :"
-                android:textColor="#835227"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +121,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="Shelf Number :"
-                android:textColor="#835227"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +135,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="Number of copies of books :"
-                android:textColor="#835227"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -148,7 +149,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="ٌRelease year:"
-                android:textColor="#835227"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -162,7 +163,7 @@
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="Description :"
-                android:textColor="#835227"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -177,8 +178,8 @@
                 android:hint="Book Name"
                 android:inputType="text"
                 android:maxEms="2"
-                android:textColor="#FFBD804B"
-                android:textColorHint="#FFBD804B"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
                 android:textSize="20sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -194,7 +195,7 @@
                 android:inputType="text"
                 android:minHeight="48dp"
                 android:text="comedian"
-                android:textColor="#FFBD804B"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView23"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -209,8 +210,8 @@
                 android:enabled="false"
                 android:hint="Author Name"
                 android:inputType="text"
-                android:textColor="#BD804B"
-                android:textColorHint="#FFBD804B"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
                 android:textSize="20sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -220,12 +221,12 @@
                 android:id="@+id/spinner_language"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/green"
                 android:enabled="false"
                 android:inputType="text"
                 android:minHeight="32dp"
                 android:text="language"
-                android:textColor="#FFBD804B"
+                android:textColor="@color/green"
                 android:textSize="20sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -241,8 +242,8 @@
                 android:hint="Number of pages"
                 android:inputType="number"
                 android:paddingTop="8dp"
-                android:textColor="#BD804B"
-                android:textColorHint="#FFBD804B"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
                 android:textSize="20sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -257,8 +258,8 @@
                 android:enabled="false"
                 android:hint="Shelf Number"
                 android:inputType="number"
-                android:textColor="#BD804B"
-                android:textColorHint="#FFBD804B"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
                 android:textSize="20sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -274,8 +275,8 @@
                 android:enabled="false"
                 android:hint="Number of copies of books "
                 android:inputType="number"
-                android:textColor="#BD804B"
-                android:textColorHint="#FFBD804B"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -292,8 +293,8 @@
                 android:gravity="start|top"
                 android:hint="Description"
                 android:inputType="textMultiLine"
-                android:textColor="#BD804B"
-                android:textColorHint="#FFBD804B"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textview7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -308,17 +309,18 @@
                 android:gravity="start|top"
                 android:hint="Release year"
                 android:inputType="text"
-                android:textColor="#BD804B"
-                android:textColorHint="#FFBD804B"
+                android:textColor="@color/green"
+                android:textColorHint="@color/green"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView81"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/btn_edit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:textColor="@color/white"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/btn_add"
                 android:text="edit"
@@ -326,7 +328,7 @@
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
                 app:layout_constraintTop_toBottomOf="@+id/textview7" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/btn_metaphor"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -334,6 +336,7 @@
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/btn_add"
                 android:text="metaphor"
+                android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textview7" />
@@ -352,113 +355,6 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent=".50" />
 
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/textView5"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginStart="16dp"-->
-            <!--                android:layout_marginTop="24dp"-->
-            <!--                android:text="Book Name :"-->
-            <!--                android:textColor="#835227"-->
-            <!--                android:textSize="20sp"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/addToFavorite" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/textView23"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginStart="16dp"-->
-            <!--                android:layout_marginTop="16dp"-->
-            <!--                android:text="Category :"-->
-            <!--                android:textColor="#835227"-->
-            <!--                android:textSize="20sp"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/textView5" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/spinner_category"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Comedy"-->
-            <!--                android:textColor="#FFBD804B"-->
-            <!--                android:textSize="20sp"-->
-            <!--                app:layout_constraintBaseline_toBaselineOf="@+id/textView23"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/guideline3" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/textView6"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginStart="16dp"-->
-            <!--                android:layout_marginTop="16dp"-->
-            <!--                android:text="Author Name :"-->
-            <!--                android:textColor="#835227"-->
-            <!--                android:textSize="20sp"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toBottomOf="@+id/textView23" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/textView7"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginStart="28dp"-->
-            <!--                android:text="Author Name :"-->
-            <!--                android:textColor="#835227"-->
-            <!--                android:textSize="20sp"-->
-            <!--                android:textStyle="bold"-->
-            <!--                app:layout_constraintStart_toStartOf="parent"-->
-            <!--                tools:layout_editor_absoluteY="509dp" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/bookName"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Beloved"-->
-            <!--                android:textColor="#FFBD804B"-->
-            <!--                android:textSize="20sp"-->
-            <!--                app:layout_constraintBaseline_toBaselineOf="@+id/textView5"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/guideline3" />-->
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/authorName"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Toni Morrison"-->
-            <!--                android:textColor="#BD804B"-->
-            <!--                android:textSize="20sp"-->
-            <!--                app:layout_constraintBaseline_toBaselineOf="@+id/textView6"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/guideline3" />-->
-
-            <!--            <EditText-->
-            <!--                android:id="@+id/description"-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:backgroundTint="#FFFFFF"-->
-            <!--                android:ems="10"-->
-            <!--                android:enabled="false"-->
-            <!--                android:gravity="start|top"-->
-            <!--                android:inputType="textMultiLine"-->
-            <!--                android:textColor="#BD804B"-->
-            <!--                android:text="The novel tells the story"-->
-            <!--                app:layout_constraintEnd_toEndOf="parent"-->
-            <!--                app:layout_constraintStart_toStartOf="@+id/guideline3"-->
-            <!--                tools:layout_editor_absoluteY="509dp" />-->
-
-            <!--&lt;!&ndash;                android:text="The novel tells the story of an escaped slave named Seth who escapes to Senati Ohio, in 1873. The novel investigates the trauma of slavery even after gaining freedom, and depicts Seth's sense of guilt and emotional pain after killing his child, whom she called Beloved, to keep him from living a life as a slave."&ndash;&gt;-->
-            <!--            <androidx.constraintlayout.widget.Guideline-->
-            <!--                android:id="@+id/guideline3"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:orientation="vertical"-->
-            <!--                app:layout_constraintGuide_percent="0.45" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/btn_global"
+            android:background="@drawable/btn_favorite"
             android:text="favorite"
             android:textColor="@color/white"
             android:textSize="20sp" />

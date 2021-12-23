@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_back_ground"
+    android:background="@color/white"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="113dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/logo"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_tow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="SIGN IN "
-        android:textColor="#FFFFFF"
+        android:textColor="@color/green"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -35,15 +34,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/green"
         android:drawableEnd="@drawable/ic_person_24"
         android:ems="10"
         android:hint="User Name"
         android:inputType="textPersonName"
         android:padding="8dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="24sp"
+        android:textColor="@color/green"
+        android:textColorHint="@color/green"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -54,15 +53,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="@color/green"
         android:drawableEnd="@drawable/ic_baseline_lock_24"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="8dp"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#FFFFFF"
-        android:textSize="24sp"
+        android:textColor="@color/green"
+        android:textColorHint="@color/green"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_userName" />
@@ -72,7 +71,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@drawable/btn_login"
+        android:background="@drawable/btn_add"
         android:selectAllOnFocus="false"
         android:text="Sign In"
         android:textColor="#fff"
@@ -88,7 +87,7 @@
         android:layout_marginLeft="60dp"
         android:layout_marginTop="24dp"
         android:text="Don't have an account?"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/green"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
@@ -99,22 +98,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Sign Up"
-        android:textColor="#FFEB3B"
+        android:textColor="@color/second_color"
         android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/textView2" />
 
-    <!--        <android.widget.Button-->
-    <!--            android:id="@+id/btn_singup"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:background="@drawable/btn_singup"-->
-    <!--            android:text="Sing Up"-->
-    <!--            android:textSize="16dp"-->
-    <!--            android:textAllCaps="false"-->
-    <!--            android:textColor="#FFEB3B"-->
-    <!--            app:layout_constraintBaseline_toBaselineOf="@+id/textView2"-->
-    <!--            app:layout_constraintLeft_toRightOf="@+id/textView2" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

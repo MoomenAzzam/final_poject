@@ -13,7 +13,7 @@
         android:id="@+id/txt_search"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:background="@color/main_back_ground"
+        android:background="@color/main_color"
         android:drawableEnd="@drawable/ic_baseline_search_24"
         android:hint="search"
         android:paddingLeft="8dp"
@@ -31,9 +31,10 @@
         android:id="@+id/rv_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:padding="8dp"
-        android:paddingRight="8dp"
 
+        android:paddingRight="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -42,8 +43,8 @@
 
     <ImageButton
         android:id="@+id/btn_book_add"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/btn_add"
