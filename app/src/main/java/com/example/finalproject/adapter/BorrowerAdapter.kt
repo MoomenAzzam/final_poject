@@ -37,7 +37,7 @@ class BorrowerAdapter(var data: ArrayList<Borrower>) :
                 setTitle("Delete borrower")
                 setMessage("Are you sure that you want to delete this borrower?")
                 setPositiveButton("Yse") { _, _ ->
-                    if (DatabaseHelper(context).deleteBook(data[position].id)) {
+                    if (DatabaseHelper(context).deleteBorrower(data[position].id)) {
                         data.removeAt(position)
                         notifyDataSetChanged()
                     }

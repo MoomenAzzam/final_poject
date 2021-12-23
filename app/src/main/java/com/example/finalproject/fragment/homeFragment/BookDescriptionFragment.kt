@@ -7,22 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
+import com.example.finalproject.BorrowerFragment
 import com.example.finalproject.MainActivity
+import com.example.finalproject.R
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentBookDescriptionBinding
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val BOOK_ID = "bookId"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [BlankFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-
 class BookDescriptionFragment : Fragment() {
 
     private var bookId: Int? = null
+    private var isEditing = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,55 +57,70 @@ class BookDescriptionFragment : Fragment() {
         }
 
         binding.btnEdit.setOnClickListener {
-            binding.btnEdit.text = "save"
+            isEditing = !isEditing
 
-            binding.bookName.isEnabled = true
-            binding.spinnerCategory.isEnabled =true
-            binding.authorName.isEnabled = true
-            binding.spinnerLanguage.isEnabled = true
-            binding.numberOfPages.isEnabled = true
-            binding.shelfNumber.isEnabled = true
-            binding.NumberOfCopiesOfBooks.isEnabled = true
-            binding.releaseYear.isEnabled = true
-            binding.description.isEnabled = true
+            if (isEditing) {
+                binding.btnEdit.text = "save"
 
-            if(binding.bookName.text.toString().isNotEmpty() && binding.spinnerCategory.text.toString().isNotEmpty() &&
-                binding.authorName.text.toString().isNotEmpty()&& binding.spinnerLanguage.text.toString().isNotEmpty() &&
-                binding.numberOfPages.text.toString().isNotEmpty() && binding.shelfNumber.text.toString().isNotEmpty() &&
-                binding.NumberOfCopiesOfBooks.text.toString().isNotEmpty() && binding.releaseYear.text.toString().isNotEmpty() &&
-                binding.description.text.toString().isNotEmpty()){
+                binding.bookName.isEnabled = true
+                binding.spinnerCategory.isEnabled = true
+                binding.authorName.isEnabled = true
+                binding.spinnerLanguage.isEnabled = true
+                binding.numberOfPages.isEnabled = true
+                binding.shelfNumber.isEnabled = true
+                binding.NumberOfCopiesOfBooks.isEnabled = true
+                binding.releaseYear.isEnabled = true
+                binding.description.isEnabled = true
 
-                val bookName = binding.bookName.text.toString()
 
-                val category = binding.spinnerCategory.text.toString()
-                val authorName = binding.authorName.text.toString()
-                val language = binding.spinnerLanguage.text.toString()
-                val pagesNum = binding.numberOfPages.text.toString()
-                val shelfNumber = binding.shelfNumber.text.toString()
-                val NumberOfCopiesOfBooks = binding.NumberOfCopiesOfBooks.text.toString()
-                val releaseYear = binding.releaseYear.text.toString()
-                val description = binding.description.text.toString()
 
-                var test = true
-                try{
-                    val pagesIsANumber = Integer.parseInt(pagesNum)
-                    val copiesIsANumber = Integer.parseInt(NumberOfCopiesOfBooks)
-                    val YearIsANumber = Integer.parseInt(releaseYear)
-                }catch (e: NumberFormatException){
-                    test = false
-                }
+            }else{
+                //pressed the save btn
+                if (binding.bookName.text.toString()
+                        .isNotEmpty() && binding.spinnerCategory.text.toString().isNotEmpty() &&
+                    binding.authorName.text.toString()
+                        .isNotEmpty() && binding.spinnerLanguage.text.toString().isNotEmpty() &&
+                    binding.numberOfPages.text.toString()
+                        .isNotEmpty() && binding.shelfNumber.text.toString().isNotEmpty() &&
+                    binding.NumberOfCopiesOfBooks.text.toString()
+                        .isNotEmpty() && binding.releaseYear.text.toString().isNotEmpty() &&
+                    binding.description.text.toString().isNotEmpty()
+                ) {
 
-                if(test){
+                    val bookName = binding.bookName.text.toString()
+
+                    val category = binding.spinnerCategory.text.toString()
+                    val authorName = binding.authorName.text.toString()
+                    val language = binding.spinnerLanguage.text.toString()
+                    val pagesNum = binding.numberOfPages.text.toString().toInt()
+                    val shelfNumber = binding.shelfNumber.text.toString()
+                    val numberOfCopiesOfBooks =
+                        binding.NumberOfCopiesOfBooks.text.toString().toInt()
+                    val releaseYear = binding.releaseYear.text.toString().toInt()
+                    val description = binding.description.text.toString()
+
+
                     val db = DatabaseHelper(requireActivity())
                     val img = (binding.imgBook as BitmapDrawable).bitmap
-                    db.updateBook(bookId!!, bookName,authorName,description, category, img)
+                    db.updateBook(
+                        bookId!!, bookName, category, authorName, language, pagesNum, shelfNumber,
+                        numberOfCopiesOfBooks, releaseYear, description, img
+                    )
 
-                }else
-                    Toast.makeText(context, "Please make sure that the numbers are entered correctly", Toast.LENGTH_SHORT).show()
+                } else
+                    Toast.makeText(
+                        context,
+                        "Please make sure to fill in all fields",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
-            }else
-                Toast.makeText(context, "Please make sure to fill in all fields", Toast.LENGTH_SHORT).show()
+            }
+        }
 
+        binding.btnMetaphor.setOnClickListener {
+            (context as FragmentActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView, BorrowerFragment.newInstance(bookId!!))
+                .commit()
         }
 
         return binding.root

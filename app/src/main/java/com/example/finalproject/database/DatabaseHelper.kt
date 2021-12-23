@@ -45,7 +45,7 @@ class DatabaseHelper(context: Context) :
 
     fun insertBook(
         name: String, category: String, author: String, language: String,
-        numberOfPages: Int, shelfNumber: String, numberOfCopies: Int, releaseYear:Int,
+        numberOfPages: Int, shelfNumber: String, numberOfCopies: Int, releaseYear: Int,
         description: String, image: Bitmap
     ): Boolean {
         val cv = ContentValues()
@@ -66,19 +66,20 @@ class DatabaseHelper(context: Context) :
         return db.insert(Book.TABLE_NAME, null, cv) > 0
     }
 
-    fun getBook(id:Int): Book {
+    fun getBook(id: Int): Book {
         val c =
             db.rawQuery("select * from ${Book.TABLE_NAME} WHERE ${Book.COL_ID} = $id", null)
         c.moveToFirst()
-            val byteArray = c.getBlob(10)
-            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
-            val book = Book(
-                c.getInt(0), c.getString(1),
-                c.getString(2), c.getString(3),
-                c.getString(4), c.getInt(5),
-                c.getString(6), c.getInt(7),c.getInt(8),
-                c.getString(9),
-                bitmap)
+        val byteArray = c.getBlob(10)
+        val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+        val book = Book(
+            c.getInt(0), c.getString(1),
+            c.getString(2), c.getString(3),
+            c.getString(4), c.getInt(5),
+            c.getString(6), c.getInt(7), c.getInt(8),
+            c.getString(9),
+            bitmap
+        )
         c.close()
         return book
     }
@@ -95,9 +96,10 @@ class DatabaseHelper(context: Context) :
                 c.getInt(0), c.getString(1),
                 c.getString(2), c.getString(3),
                 c.getString(4), c.getInt(5),
-                c.getString(6), c.getInt(7),c.getInt(8),
+                c.getString(6), c.getInt(7), c.getInt(8),
                 c.getString(9),
-                bitmap)
+                bitmap
+            )
             books.add(s)
             c.moveToNext()
         }
@@ -110,18 +112,20 @@ class DatabaseHelper(context: Context) :
     }
 
     fun updateBook(
-        oldId: Int,
-        name: String,
-        author: String,
-        description: String,
-        category: String,
-        image: Bitmap
+        oldId: Int, name: String, category: String, author: String, language: String,
+        numberOfPages: Int, shelfNumber: String, numberOfCopies: Int, releaseYear: Int,
+        description: String, image: Bitmap
     ): Boolean {
         val cv = ContentValues()
         cv.put(Book.COL_NAME, name)
-        cv.put(Book.COL_AUTHOR, author)
-        cv.put(Book.COL_DESCRIPTION, description)
         cv.put(Book.COL_CATEGORY, category)
+        cv.put(Book.COL_AUTHOR, author)
+        cv.put(Book.COL_LANGUAGE, language)
+        cv.put(Book.COL_NUMBER_OF_PAGES, numberOfPages)
+        cv.put(Book.COL_SHELF_NUMBER, shelfNumber)
+        cv.put(Book.COL_NUMBER_OF_COPIES, numberOfCopies)
+        cv.put(Book.COL_RELEASE_YEAR, releaseYear)
+        cv.put(Book.COL_DESCRIPTION, description)
 
         val byteArrayOutputStream = ByteArrayOutputStream()
         image.compress(Bitmap.CompressFormat.JPEG, 30, byteArrayOutputStream)
@@ -135,7 +139,13 @@ class DatabaseHelper(context: Context) :
     //---------------------------------------------------------------------
     //User table
 
-    fun insertUser(name: String, email: String, password: String,dob: String, image: Bitmap): Boolean {
+    fun insertUser(
+        name: String,
+        email: String,
+        password: String,
+        dob: String,
+        image: Bitmap
+    ): Boolean {
         val cv = ContentValues()
         cv.put(User.COL_NAME, name)
         cv.put(User.COL_EMAIL, email)
@@ -150,7 +160,7 @@ class DatabaseHelper(context: Context) :
         return db.insert(User.TABLE_NAME, null, cv) > 0
     }
 
-    fun getUser(id: Int): User{
+    fun getUser(id: Int): User {
         val c =
             db.rawQuery("select * from ${User.TABLE_NAME} WHERE ${User.COL_ID} = $id", null)
         c.moveToFirst()
@@ -158,9 +168,11 @@ class DatabaseHelper(context: Context) :
         val byteArray = c.getBlob(5)
         val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
 
-        val user = User(c.getInt(0), c.getString(1),
+        val user = User(
+            c.getInt(0), c.getString(1),
             c.getString(2), c.getString(3),
-            c.getString(4), bitmap)
+            c.getString(4), bitmap
+        )
         c.close()
         return user
     }
@@ -174,9 +186,11 @@ class DatabaseHelper(context: Context) :
             val byteArray = c.getBlob(5)
             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
 
-            val s = User(c.getInt(0), c.getString(1),
-                    c.getString(2), c.getString(3),
-                c.getString(4), bitmap)
+            val s = User(
+                c.getInt(0), c.getString(1),
+                c.getString(2), c.getString(3),
+                c.getString(4), bitmap
+            )
             users.add(s)
             c.moveToNext()
         }
@@ -237,7 +251,7 @@ class DatabaseHelper(context: Context) :
                 c.getInt(1), c.getString(3),
                 c.getString(4), c.getString(5),
                 c.getString(6), c.getInt(7),
-                c.getString(8), c.getInt(9),c.getInt(10),
+                c.getString(8), c.getInt(9), c.getInt(10),
                 c.getString(11),
                 bitmap
             )
@@ -280,7 +294,7 @@ class DatabaseHelper(context: Context) :
         val day = calendar.get(Calendar.DAY_OF_MONTH)
         val month = calendar.get(Calendar.MONTH)
         val year = calendar.get(Calendar.YEAR)
-        val date = "$year:${month+1}:$day"
+        val date = "$year:${month + 1}:$day"
 
         cv.put(Borrower.COL_BORROW_DATE, date)
         return db.insert(Borrower.TABLE_NAME, null, cv) > 0
@@ -289,13 +303,16 @@ class DatabaseHelper(context: Context) :
     fun getAllBorrowersForBook(bookId: Int): ArrayList<Borrower> {
         var borrowers = ArrayList<Borrower>()
         val c =
-            db.rawQuery("select * from ${Borrower.TABLE_NAME} WHERE ${Borrower.COL_BOOK_ID} = $bookId" +
-                    " order by ${Borrower.COL_ID} desc", null)
+            db.rawQuery(
+                "select * from ${Borrower.TABLE_NAME} WHERE ${Borrower.COL_BOOK_ID} = $bookId" +
+                        " order by ${Borrower.COL_ID} desc", null
+            )
         c.moveToFirst()
         while (!c.isAfterLast) {
             val s = Borrower(
-                c.getInt(0), c.getInt(1),c.getString(2),
-                c.getString(3))
+                c.getInt(0), c.getInt(1), c.getString(2),
+                c.getString(3)
+            )
             borrowers.add(s)
             c.moveToNext()
         }

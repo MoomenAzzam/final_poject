@@ -77,12 +77,3 @@ class AddBookFragment : Fragment() {
     }
 
 }
-
-/*للتاكد اذا المدخل رقم ام لا
- val pagesIsANumber = parseInt(pagesNum)
-                val shelfIsANumber = parseInt(shelfNumber)
-                val copiesIsANumber = parseInt(copiesNum)
-
-                if(pagesIsANumber ){
-
-                }*/
