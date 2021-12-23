@@ -14,6 +14,7 @@ import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentBorrowerBinding
 import com.example.finalproject.databinding.FragmentFavoriteBinding
 import com.example.finalproject.fragment.homeFragment.BookDescriptionFragment
+import com.example.finalproject.model.Borrower
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val BOOK_ID = "bookId"
@@ -38,9 +39,10 @@ class BorrowerFragment : Fragment() {
 
         val db = DatabaseHelper(requireContext())
 
-        val adapter = BorrowerAdapter(db.getAllBorrowersForBook(bookId!!))
-        binding.rvMetaphor.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvMetaphor.adapter = adapter
+        val borrowers = db.getAllBorrowersForBook(bookId!!)
+        val adapter = BorrowerAdapter(borrowers)
+        binding.rvBorrower.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvBorrower.adapter = adapter
         
         binding.btnAddBorrower.setOnClickListener { 
             if(binding.tvBorrowerName.text.isNotEmpty()){
@@ -51,7 +53,10 @@ class BorrowerFragment : Fragment() {
                     db.updateBook(book.id,book.name,book.category,book.author,book.language,book.numberOfPages,book.shelfNumber,
                         book.numberOfCopies - 1 ,book.releaseYear,book.description,book.image)
                     //update the data
-                    (binding.rvMetaphor.adapter as BorrowerAdapter).notifyDataSetChanged()
+                    val borrowers = db.getAllBorrowersForBook(bookId!!)
+                    binding.rvBorrower.adapter = BorrowerAdapter(borrowers)
+
+                    (binding.rvBorrower.adapter as BorrowerAdapter).notifyDataSetChanged()
 
                     binding.tvBorrowerName.setText("")
                 }else{
@@ -67,7 +72,7 @@ class BorrowerFragment : Fragment() {
 
     companion object {
         fun newInstance(bookId: Int) =
-            BookDescriptionFragment().apply {
+            BorrowerFragment().apply {
                 arguments = Bundle().apply {
                     putInt(BOOK_ID, bookId)
                 }
