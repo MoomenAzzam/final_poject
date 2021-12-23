@@ -9,7 +9,6 @@
         <item>Drama</item>
     </string-array>
     <string-array name="search_category">
-        <item></item>
         <item>All</item>
         <item>Romantic</item>
         <item>Comedy</item>

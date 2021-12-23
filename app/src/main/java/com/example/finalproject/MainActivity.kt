@@ -102,7 +102,6 @@ class MainActivity : AppCompatActivity() {
 
         } else if (requestCode == REQ_GALLERY && resultCode == RESULT_OK && data != null) {
             val uri = data.data
-            Log.e("hzm", uri.toString())
             imageView.setImageURI(uri)
         }
     }

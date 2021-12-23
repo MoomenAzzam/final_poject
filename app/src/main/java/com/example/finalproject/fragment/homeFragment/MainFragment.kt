@@ -50,7 +50,7 @@ class MainFragment : Fragment() {
         //searching using category
         binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>?, view: View, i: Int, l: Long) {
-                if (binding.spinner.selectedItem.toString() == "all") {
+                if (binding.spinner.selectedItem.toString() == "All") {
                     //get all books
                     (binding.rvView.adapter as RV_book_adapter).searchCategory("")
                 }else{
