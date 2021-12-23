@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
-import com.example.finalproject.BorrowerFragment
 import com.example.finalproject.MainActivity
 import com.example.finalproject.R
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentBookDescriptionBinding
+import android.graphics.Bitmap
+
+
+
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val BOOK_ID = "bookId"
@@ -48,12 +51,13 @@ class BookDescriptionFragment : Fragment() {
         binding.NumberOfCopiesOfBooks.setText(book.numberOfCopies.toString())
         binding.releaseYear.setText(book.releaseYear.toString())
         binding.description.setText(book.description)
+        binding.imgBook.setImageBitmap(book.image)
 
 
         //Add the book to your favourites
         var isFavorite = db.isFavorite(MainActivity.userId, bookId!!)
 
-        fun setFavortieBtnText() {
+        fun setFavoriteBtnText() {
             if (isFavorite) {
                 binding.addToFavorite.text = "Remove from Favorite"
             } else {
@@ -62,7 +66,7 @@ class BookDescriptionFragment : Fragment() {
         }
 
         //setting the starting text to the favorite btn
-        setFavortieBtnText()
+        setFavoriteBtnText()
 
         binding.addToFavorite.setOnClickListener {
 
@@ -83,7 +87,7 @@ class BookDescriptionFragment : Fragment() {
             }
 
             isFavorite = !isFavorite
-            setFavortieBtnText()
+            setFavoriteBtnText()
         }
 
 
@@ -107,6 +111,18 @@ class BookDescriptionFragment : Fragment() {
 
             } else {
                 //pressed the save btn
+                binding.btnEdit.text = "edit"
+
+                binding.bookName.isEnabled = false
+                binding.spinnerCategory.isEnabled = false
+                binding.authorName.isEnabled = false
+                binding.spinnerLanguage.isEnabled = false
+                binding.numberOfPages.isEnabled = false
+                binding.shelfNumber.isEnabled = false
+                binding.NumberOfCopiesOfBooks.isEnabled = false
+                binding.releaseYear.isEnabled = false
+                binding.description.isEnabled = false
+
                 if (binding.bookName.text.toString()
                         .isNotEmpty() && binding.spinnerCategory.text.toString().isNotEmpty() &&
                     binding.authorName.text.toString()
@@ -132,11 +148,13 @@ class BookDescriptionFragment : Fragment() {
 
 
                     val db = DatabaseHelper(requireActivity())
-                    val img = (binding.imgBook as BitmapDrawable).bitmap
-                    db.updateBook(
-                        bookId!!, bookName, category, authorName, language, pagesNum, shelfNumber,
-                        numberOfCopiesOfBooks, releaseYear, description, img
-                    )
+                    val bitmap = (binding.imgBook.drawable as BitmapDrawable).bitmap
+                    if(db.updateBook(bookId!!, bookName, category, authorName, language, pagesNum, shelfNumber,
+                        numberOfCopiesOfBooks, releaseYear, description, bitmap)){
+                        Toast.makeText(requireContext(), "saved", Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(requireContext(), "error while saving", Toast.LENGTH_SHORT).show()
+                    }
 
                 } else
                     Toast.makeText(
@@ -148,14 +166,19 @@ class BookDescriptionFragment : Fragment() {
             }
         }
 
-        binding.btnMetaphor.setOnClickListener {
+        binding.btnBorrower.setOnClickListener {
             (context as FragmentActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView, BorrowerFragment.newInstance(bookId!!))
                 .commit()
         }
 
+        binding.imgBook.setOnClickListener {
+            (requireActivity() as MainActivity).cameraBtn(binding.imgBook)
+        }
+
         return binding.root
     }
+
 
     companion object {
         fun newInstance(bookId: Int) =
