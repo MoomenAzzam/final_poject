@@ -38,9 +38,14 @@ class BookDescriptionFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = FragmentBookDescriptionBinding.inflate(inflater, container, false)
-//Add the book to your favourites
+        val db = DatabaseHelper(requireContext())
+
+        val book = db.getBook(bookId!!)
+        binding.bookName.setText(book.name)
+        // TODO: do the same for all data
+
+        //Add the book to your favourites
         binding.addToFavorite.setOnClickListener {
-            val db = DatabaseHelper(requireContext())
 
             db.insertFavorite(MainActivity.userId, bookId!!)
         }
