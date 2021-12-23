@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <!--            <Button-->
-<!--            android:scaleType="centerCrop"-->
+            <!--            android:scaleType="centerCrop"-->
             <!--                android:id="@+id/addToFavorite"-->
             <!--                android:layout_width="0dp"-->
             <!--                android:layout_height="wrap_content"-->
