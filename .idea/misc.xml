@@ -30,9 +30,12 @@
         <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/drawable/btn_profile.xml" value="0.2203125" />
         <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/drawable/button_color_pressed.xml" value="0.2203125" />
         <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/drawable/button_color_pressed_favorite.xml" value="0.2203125" />
+        <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/drawable/button_color_pressed_home.xml" value="0.2203125" />
         <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/drawable/button_color_pressed_profile.xml" value="0.2203125" />
         <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/drawable/button_text_color.xml" value="0.2203125" />
-        <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/layout/fragment_book_description.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/layout/fragment_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/01/AndroidStudioProjects/final_poject/app/src/main/res/layout/fragment_sing_up.xml" value="0.20416666666666666" />
