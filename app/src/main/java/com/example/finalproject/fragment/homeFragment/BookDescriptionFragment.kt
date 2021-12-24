@@ -166,8 +166,8 @@ class BookDescriptionFragment : Fragment() {
             }
         }
 
-        binding.btnBorrower.setOnClickListener {
-            (context as FragmentActivity).supportFragmentManager.beginTransaction()
+        binding.btnBorrowers.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView, BorrowerFragment.newInstance(bookId!!))
                 .commit()
         }

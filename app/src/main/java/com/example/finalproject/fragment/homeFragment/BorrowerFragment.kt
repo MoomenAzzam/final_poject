@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.adapter.BookAdapter
@@ -13,6 +14,7 @@ import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentBorrowerBinding
 import com.example.finalproject.databinding.FragmentFavoriteBinding
 import com.example.finalproject.fragment.homeFragment.BookDescriptionFragment
+import com.example.finalproject.model.Borrower
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val BOOK_ID = "bookId"
@@ -37,16 +39,40 @@ class BorrowerFragment : Fragment() {
 
         val db = DatabaseHelper(requireContext())
 
-        val adapter = BorrowerAdapter(db.getAllBorrowersForBook(bookId!!))
-        binding.rvMetaphor.layoutManager = LinearLayoutManager(requireContext())
-        binding.rvMetaphor.adapter = adapter
+        val borrowers = db.getAllBorrowersForBook(bookId!!)
+        val adapter = BorrowerAdapter(borrowers)
+        binding.rvBorrower.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvBorrower.adapter = adapter
+        
+        binding.btnAddBorrower.setOnClickListener { 
+            if(binding.tvBorrowerName.text.isNotEmpty()){
+                if(db.insertBorrower(bookId!!, binding.tvBorrowerName.text.toString())){
+                    Toast.makeText(requireContext(), "Added borrower", Toast.LENGTH_SHORT).show()
+                    var book = db.getBook(bookId!!)
+                    //decrease the number of copies by one
+                    db.updateBook(book.id,book.name,book.category,book.author,book.language,book.numberOfPages,book.shelfNumber,
+                        book.numberOfCopies - 1 ,book.releaseYear,book.description,book.image)
+                    //update the data
+                    val borrowers = db.getAllBorrowersForBook(bookId!!)
+                    binding.rvBorrower.adapter = BorrowerAdapter(borrowers)
+
+                    (binding.rvBorrower.adapter as BorrowerAdapter).notifyDataSetChanged()
+
+                    binding.tvBorrowerName.setText("")
+                }else{
+                    Toast.makeText(requireContext(), "Error while adding the borrower", Toast.LENGTH_SHORT).show()
+                }
+            }else{
+                Toast.makeText(requireContext(), "Pleas fill the name field", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         return binding.root
     }
 
     companion object {
         fun newInstance(bookId: Int) =
-            BookDescriptionFragment().apply {
+            BorrowerFragment().apply {
                 arguments = Bundle().apply {
                     putInt(BOOK_ID, bookId)
                 }

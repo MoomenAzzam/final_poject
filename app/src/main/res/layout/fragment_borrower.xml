@@ -8,7 +8,7 @@
     tools:context=".fragment.homeFragment.BorrowerFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_metaphor"
+        android:id="@+id/rv_borrower"
         android:layout_width="0dp"
         android:layout_height="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_add_borrower" />
 
     <EditText
-        android:id="@+id/tvUsernameBorrower"
+        android:id="@+id/tvBorrowerName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/green"
@@ -41,5 +41,5 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvUsernameBorrower" />
+        app:layout_constraintTop_toBottomOf="@+id/tvBorrowerName" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -329,13 +329,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/textview7" />
 
             <android.widget.Button
-                android:id="@+id/btn_borrower"
+                android:id="@+id/btn_borrowers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/btn_add"
-                android:text="borrower"
+                android:text="borrowers"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/guideline4"
                 app:layout_constraintStart_toStartOf="parent"
