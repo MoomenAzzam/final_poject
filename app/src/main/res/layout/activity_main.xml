@@ -21,9 +21,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/btn_home"
+            android:background="@drawable/button_color_pressed_home"
             android:text="home"
-            android:textColor="@color/white"
+            android:textColor="@drawable/button_text_color"
             android:textSize="20sp"
             />
 <!--            android:textStyle="bold"-->
@@ -33,9 +33,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/btn_favorite"
+            android:background="@drawable/button_color_pressed_favorite"
             android:text="favorite"
-            android:textColor="@color/white"
+            android:textColor="@drawable/button_text_color"
             android:textSize="20sp" />
 
         <android.widget.Button
@@ -46,7 +46,7 @@
             android:background="@drawable/btn_profile"
             android:text="profile"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="@drawable/button_text_color"
             />
     </LinearLayout>
 
