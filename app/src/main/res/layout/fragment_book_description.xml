@@ -213,14 +213,13 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/spinner_category"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:enabled="false"
                 android:entries="@array/category"
-                android:inputType="text"
                 android:minHeight="48dp"
                 android:text="comedian"
                 android:textColor="@color/gray"
@@ -245,15 +244,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/spinner_language"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:enabled="false"
                 android:inputType="text"
-                android:minHeight="32dp"
+                android:minHeight="48dp"
                 android:text="language"
+                android:entries="@array/language"
                 android:textColor="@color/gray"
                 android:textSize="20sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
