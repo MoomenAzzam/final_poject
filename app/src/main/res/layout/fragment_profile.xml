@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/personImg"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_person_24"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="205dp"
         android:text="Name:"
         android:textColor="@color/gray"
         android:textSize="24sp"
@@ -123,6 +123,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:enabled="false"
+        android:focusable="false"
         android:inputType="date"
         android:text="13/13/2013"
         android:textColor="@color/gray"

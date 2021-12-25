@@ -1,5 +1,6 @@
 package com.example.finalproject.fragment.homeFragment
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.example.finalproject.UserSignActivity
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentBookDescriptionBinding
 import com.example.finalproject.databinding.FragmentProfileBinding
+import java.util.*
 
 private const val USER_ID = "userId"
 
@@ -99,6 +101,21 @@ class ProfileFragment : Fragment() {
 
         binding.btnAddImgFromCamera.setOnClickListener {
             (requireActivity() as MainActivity).cameraBtn(binding.personImg)
+        }
+
+
+        binding.tvDOB.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+            val month = calendar.get(Calendar.MONTH)
+            val year = calendar.get(Calendar.YEAR)
+
+            // val formatter = SimpleDateFormat("d/M/yyyy EE", Locale.ENGLISH)
+            val datePicker = DatePickerDialog(requireContext(), { _, y, m, d ->
+                binding.tvDOB.setText("$y/${m + 1}/$d")
+            }, year, month, day)
+            datePicker.show()
+
         }
 
 
