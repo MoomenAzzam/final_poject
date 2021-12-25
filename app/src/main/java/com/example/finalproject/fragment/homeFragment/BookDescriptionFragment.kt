@@ -13,8 +13,8 @@ import com.example.finalproject.R
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentBookDescriptionBinding
 import android.graphics.Bitmap
-
-
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,11 +45,21 @@ class BookDescriptionFragment : Fragment() {
         binding.btnAddImgFromCamera.visibility = View.INVISIBLE;
         binding.btnAddImgFromGallery.visibility = View.INVISIBLE;
 
+        //disable spinners
+        binding.spinnerCategory.isEnabled = false
+        binding.spinnerLanguage.isEnabled = false
+
+
+        //the spinners lists
+        val categoryArr: List<String> = resources.getStringArray(R.array.category).toList();
+        val languageArr: List<String> = resources.getStringArray(R.array.language).toList();
+
         val book = db.getBook(bookId!!)
+
         binding.bookName.setText(book.name)
-        binding.spinnerCategory.setText(book.category)
+        binding.spinnerCategory.setSelection(categoryArr.indexOf(book.category))
         binding.authorName.setText(book.author)
-        binding.spinnerLanguage.setText(book.language)
+        binding.spinnerLanguage.setSelection(languageArr.indexOf(book.language))
         binding.numberOfPages.setText(book.numberOfPages.toString())
         binding.shelfNumber.setText(book.shelfNumber)
         binding.NumberOfCopiesOfBooks.setText(book.numberOfCopies.toString())
@@ -135,10 +145,8 @@ class BookDescriptionFragment : Fragment() {
                 binding.btnAddImgFromGallery.visibility = View.INVISIBLE;
 
                 if (binding.bookName.text.toString()
-                        .isNotEmpty() && binding.spinnerCategory.text.toString().isNotEmpty() &&
-                    binding.authorName.text.toString()
-                        .isNotEmpty() && binding.spinnerLanguage.text.toString().isNotEmpty() &&
-                    binding.numberOfPages.text.toString()
+                        .isNotEmpty() && binding.authorName.text.toString()
+                        .isNotEmpty() && binding.numberOfPages.text.toString()
                         .isNotEmpty() && binding.shelfNumber.text.toString().isNotEmpty() &&
                     binding.NumberOfCopiesOfBooks.text.toString()
                         .isNotEmpty() && binding.releaseYear.text.toString().isNotEmpty() &&
@@ -147,9 +155,9 @@ class BookDescriptionFragment : Fragment() {
 
                     val bookName = binding.bookName.text.toString()
 
-                    val category = binding.spinnerCategory.text.toString()
+                    val category = binding.spinnerCategory.selectedItem.toString()
                     val authorName = binding.authorName.text.toString()
-                    val language = binding.spinnerLanguage.text.toString()
+                    val language = binding.spinnerLanguage.selectedItem.toString()
                     val pagesNum = binding.numberOfPages.text.toString().toInt()
                     val shelfNumber = binding.shelfNumber.text.toString()
                     val numberOfCopiesOfBooks =
