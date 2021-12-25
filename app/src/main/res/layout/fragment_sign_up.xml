@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="@+id/imgUser"
         app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
 
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageButton
         android:id="@+id/btnAddImgFromGallery"
@@ -41,7 +41,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imgUser"
         app:layout_constraintStart_toStartOf="@+id/imgUser"
         app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/tvName"
