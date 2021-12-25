@@ -43,8 +43,11 @@ class ProfileFragment : Fragment() {
         binding.tvPassword.setText(profile.password)
         binding.personImg.setImageBitmap(profile.image)
 
+
         binding.btnEdit.setOnClickListener {
             isEditing = !isEditing
+
+
             //When pressed, the user will be given the ability to modify and save the modified data as well
             if (isEditing) {
                 binding.btnEdit.text = "save"

@@ -7,14 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
 import com.example.finalproject.MainActivity
 import com.example.finalproject.R
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentBookDescriptionBinding
-import android.graphics.Bitmap
-import java.util.*
-import kotlin.collections.ArrayList
+
 
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,7 +41,6 @@ class BookDescriptionFragment : Fragment() {
         //hide camera and gallery buttons
         binding.btnAddImgFromCamera.visibility = View.INVISIBLE;
         binding.btnAddImgFromGallery.visibility = View.INVISIBLE;
-        //binding.bookName.setTextColor(resources.getColor(R.color.gray));
 
         //disable spinners
         binding.spinnerCategory.isEnabled = false
@@ -80,6 +76,7 @@ class BookDescriptionFragment : Fragment() {
             }
         }
 
+
         //setting the starting text to the favorite btn
         setFavoriteBtnText()
 
@@ -109,6 +106,7 @@ class BookDescriptionFragment : Fragment() {
         //edit & save button
         binding.btnEdit.setOnClickListener {
             isEditing = !isEditing
+
 
             if (isEditing) {
                 binding.btnEdit.text = "save"
@@ -155,14 +153,12 @@ class BookDescriptionFragment : Fragment() {
                 ) {
 
                     val bookName = binding.bookName.text.toString()
-
                     val category = binding.spinnerCategory.selectedItem.toString()
                     val authorName = binding.authorName.text.toString()
                     val language = binding.spinnerLanguage.selectedItem.toString()
                     val pagesNum = binding.numberOfPages.text.toString().toInt()
                     val shelfNumber = binding.shelfNumber.text.toString()
-                    val numberOfCopiesOfBooks =
-                        binding.NumberOfCopiesOfBooks.text.toString().toInt()
+                    val numberOfCopiesOfBooks = binding.NumberOfCopiesOfBooks.text.toString().toInt()
                     val releaseYear = binding.releaseYear.text.toString().toInt()
                     val description = binding.description.text.toString()
                     val bitmap = (binding.imgBook.drawable as BitmapDrawable).bitmap
@@ -206,6 +202,9 @@ class BookDescriptionFragment : Fragment() {
         binding.imgBook.setOnClickListener {
             (requireActivity() as MainActivity).cameraBtn(binding.imgBook)
         }
+
+
+
 
         return binding.root
     }
