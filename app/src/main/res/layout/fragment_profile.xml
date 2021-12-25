@@ -21,26 +21,22 @@
 
     <ImageButton
         android:id="@+id/btnAddImgFromCamera"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="#00FFFFFF"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/camera_shape"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toBottomOf="@+id/personImg"
+        app:layout_constraintBottom_toBottomOf="@+id/personImg"
+        app:layout_constraintEnd_toEndOf="@+id/personImg"
         app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/btnAddImgFromGallery"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintStart_toEndOf="@+id/btnAddImgFromCamera"
-        app:layout_constraintTop_toBottomOf="@+id/personImg"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/studio_shape"
+        app:layout_constraintBottom_toBottomOf="@+id/personImg"
+        app:layout_constraintStart_toStartOf="@+id/personImg"
         app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -184,6 +180,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5" />
+        app:layout_constraintGuide_begin="206dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

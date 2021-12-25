@@ -31,29 +31,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <ImageButton
-                android:id="@+id/btnAddImgFromCamera"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="#00FFFFFF"
-                android:minHeight="48dp"
-                app:layout_constraintEnd_toStartOf="@+id/guideline5"
-                app:layout_constraintTop_toBottomOf="@+id/imgBook"
-                app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <ImageButton
-                android:id="@+id/btnAddImgFromGallery"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="16dp"
-                android:backgroundTint="#00FFFFFF"
-                app:layout_constraintStart_toEndOf="@+id/btnAddImgFromCamera"
-                app:layout_constraintTop_toBottomOf="@+id/imgBook"
-                app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
-                tools:ignore="SpeakableTextPresentCheck" />
-
             <!--            <android.widget.Button-->
             <!--                android:id="@+id/btn_edit_image"-->
             <!--                android:layout_width="150dp"-->
@@ -66,11 +43,32 @@
             <!--                app:layout_constraintStart_toStartOf="parent"-->
             <!--                app:layout_constraintTop_toBottomOf="@+id/imgBook" />-->
 
+            <ImageButton
+                android:id="@+id/btnAddImgFromCamera"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/camera_shape"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBook"
+                app:layout_constraintEnd_toEndOf="@+id/imgBook"
+                app:srcCompat="@drawable/ic_baseline_add_a_photo_24"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <ImageButton
+                android:id="@+id/btnAddImgFromGallery"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/studio_shape"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBook"
+                app:layout_constraintStart_toStartOf="@+id/imgBook"
+                app:srcCompat="@drawable/ic_baseline_add_photo_alternate_24"
+                tools:ignore="SpeakableTextPresentCheck" />
+
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="50dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="Book Name :"
@@ -78,7 +76,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnAddImgFromCamera" />
+                app:layout_constraintTop_toBottomOf="@+id/imgBook" />
 
             <TextView
                 android:id="@+id/textView23"
