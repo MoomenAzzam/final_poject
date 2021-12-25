@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:backgroundTint="@color/green"
-        android:drawableEnd="@drawable/ic_person_24"
+        android:drawableStart="@drawable/ic_person_24"
         android:hint="Name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -69,7 +69,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:drawableEnd="@drawable/ic_baseline_lock_24"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
         android:hint="Password"
         android:textSize="20sp"
         android:inputType="textPassword"
@@ -79,7 +79,6 @@
         android:textColor="@color/green"
         android:textColorHint="@color/green"
         android:backgroundTint="@color/green"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
@@ -90,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="20sp"
-        android:drawableEnd="@drawable/ic_baseline_lock_24"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
         android:hint="Re-Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
@@ -111,7 +110,7 @@
         android:textSize="20sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:drawableEnd="@drawable/ic_baseline_email_24"
+        android:drawableStart="@drawable/ic_baseline_email_24"
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
@@ -131,7 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="20sp"
-        android:drawableEnd="@drawable/ic_baseline_date_range_24"
+        android:drawableStart="@drawable/ic_baseline_date_range_24"
         android:hint="Date of barth day"
         android:inputType="date"
         android:minHeight="48dp"
@@ -164,12 +163,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Already Have an Account ?"
+        android:text="Sign in"
         android:textColor="@color/second_color"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -178,5 +176,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".5" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:text="Already Have an Account ?"
+        android:textColor="@color/green"
+        android:textSize="14sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/singInLink"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
