@@ -10,15 +10,27 @@ import android.widget.Toast
 import com.example.finalproject.MainActivity
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentAddBookBinding
+import com.example.finalproject.databinding.FragmentBorrowerBinding
 
 class AddBookFragment : Fragment() {
+
+    lateinit var binding: FragmentAddBookBinding
+    lateinit var db: DatabaseHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = FragmentAddBookBinding.inflate(inflater, container, false)
+        binding = FragmentAddBookBinding.inflate(inflater, container, false)
+        db = DatabaseHelper(requireActivity())
+
+        return binding.root
+    }
+
+
+    override fun onResume() {
+        super.onResume()
 
         binding.btnAdd.setOnClickListener {
             if (binding.bookName.text.toString()
@@ -46,7 +58,7 @@ class AddBookFragment : Fragment() {
 
                 //After making sure that all this data is correct, we include this information in the database
 
-                val db = DatabaseHelper(requireActivity())
+
                 if (db.insertBook(
                         bookName, category, authorName, language,
                         pagesNum, shelfNumber, copiesNum, releaseYear, description, bitmap
@@ -80,8 +92,6 @@ class AddBookFragment : Fragment() {
             (requireActivity() as MainActivity).galleryBtn(binding.imgBook)
         }
 
-
-        return binding.root
     }
 
 }

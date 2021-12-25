@@ -13,17 +13,28 @@ import com.example.finalproject.adapter.BookAdapter
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentMainBinding
 import android.widget.AdapterView
+import com.example.finalproject.databinding.FragmentProfileBinding
 
 
 class MainFragment : Fragment() {
+
+    lateinit var binding: FragmentMainBinding
+    lateinit var db:DatabaseHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = FragmentMainBinding.inflate(inflater, container, false)
-        val db = DatabaseHelper(requireContext())
+        binding = FragmentMainBinding.inflate(inflater, container, false)
+        db = DatabaseHelper(requireContext())
+
+        return binding.root
+    }
+
+
+    override fun onResume() {
+        super.onResume()
 
         //the recycler view adapter
         val adapter = BookAdapter(db.getAllBooks())
@@ -71,7 +82,6 @@ class MainFragment : Fragment() {
             MainActivity.swipeFragment(requireActivity(), BookDescriptionFragment())
         }
 
-        return binding.root
     }
 
 }

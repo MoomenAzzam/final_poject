@@ -11,13 +11,16 @@ import com.example.finalproject.MainActivity
 import com.example.finalproject.R
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentBookDescriptionBinding
-
+import com.example.finalproject.databinding.FragmentBorrowerBinding
 
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val BOOK_ID = "bookId"
 
 class BookDescriptionFragment : Fragment() {
+
+    lateinit var binding: FragmentBookDescriptionBinding
+    lateinit var db:DatabaseHelper
 
     private var bookId: Int? = null
     private var isEditing = false
@@ -35,8 +38,17 @@ class BookDescriptionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = FragmentBookDescriptionBinding.inflate(inflater, container, false)
-        val db = DatabaseHelper(requireContext())
+        binding = FragmentBookDescriptionBinding.inflate(inflater, container, false)
+        db = DatabaseHelper(requireContext())
+
+
+
+        return binding.root
+    }
+
+
+    override fun onResume() {
+        super.onResume()
 
         //hide camera and gallery buttons
         binding.btnAddImgFromCamera.visibility = View.INVISIBLE;
@@ -79,6 +91,7 @@ class BookDescriptionFragment : Fragment() {
 
         //setting the starting text to the favorite btn
         setFavoriteBtnText()
+
 
         binding.addToFavorite.setOnClickListener {
 
@@ -166,7 +179,7 @@ class BookDescriptionFragment : Fragment() {
 
                     val db = DatabaseHelper(requireActivity())
                     if(db.updateBook(bookId!!, bookName, category, authorName, language, pagesNum, shelfNumber,
-                        numberOfCopiesOfBooks, releaseYear, description, bitmap)){
+                            numberOfCopiesOfBooks, releaseYear, description, bitmap)){
                         Toast.makeText(requireContext(), "saved", Toast.LENGTH_SHORT).show()
                     }else{
                         Toast.makeText(requireContext(), "error while saving", Toast.LENGTH_SHORT).show()
@@ -203,10 +216,6 @@ class BookDescriptionFragment : Fragment() {
             (requireActivity() as MainActivity).cameraBtn(binding.imgBook)
         }
 
-
-
-
-        return binding.root
     }
 
 

@@ -14,16 +14,27 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject.R
 import com.example.finalproject.UserSignActivity
 import com.example.finalproject.database.DatabaseHelper
+import com.example.finalproject.databinding.ActivityMainBinding
 import com.example.finalproject.databinding.FragmentSignUpBinding
 import java.util.*
 
 
 class SignUpFragment : Fragment() {
+
+    lateinit var binding: FragmentSignUpBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentSignUpBinding.inflate(inflater, container, false)
+        binding = FragmentSignUpBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+
+    override fun onResume() {
+        super.onResume()
 
         binding.btnSignUp.setOnClickListener {
             //The button that when pressed saves the information of the new user
@@ -95,7 +106,6 @@ class SignUpFragment : Fragment() {
             UserSignActivity.swipeFragment(requireActivity(), SignInFragment())
         }
 
-        return binding.root
     }
 
 }

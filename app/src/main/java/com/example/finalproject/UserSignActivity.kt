@@ -29,7 +29,8 @@ class UserSignActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityUserSignBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//            hide action par
+
+//      hide action par
         supportActionBar?.hide()
 
         val prefs = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)

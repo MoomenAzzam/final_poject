@@ -17,11 +17,20 @@ import com.example.finalproject.databinding.FragmentSignUpBinding
 
 class SignInFragment : Fragment() {
 
+    lateinit var binding: FragmentSignInBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentSignInBinding.inflate(inflater, container, false)
+        binding = FragmentSignInBinding.inflate(inflater, container, false)
+
+        return binding.root
+    }
+
+
+    override fun onResume() {
+        super.onResume()
 
         binding.btnLogin.setOnClickListener {
             if (binding.txtUserName.text.toString()
@@ -68,11 +77,6 @@ class SignInFragment : Fragment() {
         binding.btnSingup.setOnClickListener {
             UserSignActivity.swipeFragment(requireActivity(), SignUpFragment())
         }
-
-
-        return binding.root
-
-
     }
 
 

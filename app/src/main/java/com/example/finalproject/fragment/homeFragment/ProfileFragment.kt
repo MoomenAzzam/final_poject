@@ -16,6 +16,7 @@ import com.example.finalproject.UserSignActivity
 import com.example.finalproject.database.DatabaseHelper
 import com.example.finalproject.databinding.FragmentBookDescriptionBinding
 import com.example.finalproject.databinding.FragmentProfileBinding
+import com.example.finalproject.databinding.FragmentSignInBinding
 import java.util.*
 
 private const val USER_ID = "userId"
@@ -25,12 +26,22 @@ class ProfileFragment : Fragment() {
     private var userId = MainActivity.userId
     private var isEditing = false
 
+    lateinit var binding: FragmentProfileBinding
+    lateinit var db:DatabaseHelper
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentProfileBinding.inflate(inflater, container, false)
-        val db = DatabaseHelper(requireContext())
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
+        db = DatabaseHelper(requireContext())
+
+        return binding.root
+    }
+
+
+    override fun onResume() {
+        super.onResume()
 
         //hide camera and gallery buttons
         binding.btnAddImgFromCamera.visibility = View.INVISIBLE;
@@ -46,7 +57,6 @@ class ProfileFragment : Fragment() {
 
         binding.btnEdit.setOnClickListener {
             isEditing = !isEditing
-
 
             //When pressed, the user will be given the ability to modify and save the modified data as well
             if (isEditing) {
@@ -132,7 +142,6 @@ class ProfileFragment : Fragment() {
             startActivity(i)
         }
 
-        return binding.root
     }
 
 

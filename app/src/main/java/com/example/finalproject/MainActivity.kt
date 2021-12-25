@@ -36,16 +36,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     lateinit var imageView: ImageView
+    lateinit var binding:ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val prefs = getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
         userId = prefs.getInt("userId", -1)
+    }
+
+
+    override fun onStart() {
+        super.onStart()
 
         swipeFragment(this, MainFragment())
+    }
+
+
+    override fun onResume() {
+        super.onResume()
 
         binding.btnHome.setOnClickListener {
             swipeFragment(this, MainFragment())
