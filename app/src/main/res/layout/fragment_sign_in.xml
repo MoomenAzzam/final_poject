@@ -71,7 +71,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="@drawable/btn_add"
+        android:background="@drawable/btn_main"
         android:selectAllOnFocus="false"
         android:text="Sign In"
         android:textColor="#fff"
