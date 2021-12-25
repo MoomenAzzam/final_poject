@@ -27,15 +27,19 @@ class ProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
         val binding = FragmentProfileBinding.inflate(inflater, container, false)
         val db = DatabaseHelper(requireContext())
 
-        val profile = db.getUser(userId!!)
+        //hide camera and gallery buttons
+        binding.btnAddImgFromCamera.visibility = View.INVISIBLE;
+        binding.btnAddImgFromGallery.visibility = View.INVISIBLE;
+
+        val profile = db.getUser(userId)
         binding.tvName.setText(profile.name)
         binding.tvEmail.setText(profile.email)
         binding.tvDOB.setText(profile.dob)
+        binding.tvPassword.setText(profile.password)
+        binding.personImg.setImageBitmap(profile.image)
 
         binding.btnEdit.setOnClickListener {
             isEditing = !isEditing
@@ -46,25 +50,62 @@ class ProfileFragment : Fragment() {
                 binding.tvName.isEnabled = true
                 binding.tvEmail.isEnabled = true
                 binding.tvDOB.isEnabled = true
+                binding.tvPassword.isEnabled = true
 
-                if(binding.tvName.text.toString().isNotEmpty() &&
+                //Show camera and gallery buttons
+                binding.btnAddImgFromCamera.visibility = View.VISIBLE;
+                binding.btnAddImgFromGallery.visibility = View.VISIBLE;
+
+            } else {
+                //pressed the save btn
+                binding.btnEdit.text = "edit"
+
+                binding.tvName.isEnabled = false
+                binding.tvEmail.isEnabled = false
+                binding.tvDOB.isEnabled = false
+                binding.tvPassword.isEnabled = false
+
+                //hide camera and gallery buttons
+                binding.btnAddImgFromCamera.visibility = View.INVISIBLE;
+                binding.btnAddImgFromGallery.visibility = View.INVISIBLE;
+
+                if (binding.tvName.text.toString().isNotEmpty() &&
                     binding.tvEmail.text.toString().isNotEmpty() &&
-                        binding.tvDOB.text.isNotEmpty() ){
+                    binding.tvDOB.text.toString().isNotEmpty() &&
+                    binding.tvPassword.text.toString().isNotEmpty()
+                ) {
 
                     val personName = binding.tvName.text.toString()
                     val personEmail = binding.tvEmail.text.toString()
                     val personDOB = binding.tvDOB.text.toString()
+                    val personPassword = binding.tvPassword.text.toString()
 
-                    val img = (binding.personImg as BitmapDrawable).bitmap
-                    db.updateUser(userId, personName, personEmail,0.toString(), personDOB, img)
-                }else
-                    Toast.makeText(context, "Please make sure to fill in all fields", Toast.LENGTH_SHORT).show()
+                    val img = (binding.personImg.drawable as BitmapDrawable).bitmap
+                    db.updateUser(userId, personName, personEmail, personPassword, personDOB, img)
+                } else
+                    Toast.makeText(
+                        context,
+                        "Please make sure to fill in all fields",
+                        Toast.LENGTH_SHORT
+                    ).show()
             }
-    }
+        }
+
+
+        binding.btnAddImgFromGallery.setOnClickListener {
+            (requireActivity() as MainActivity).galleryBtn(binding.personImg)
+        }
+
+
+        binding.btnAddImgFromCamera.setOnClickListener {
+            (requireActivity() as MainActivity).cameraBtn(binding.personImg)
+        }
+
 
         binding.btnLogout.setOnClickListener {
             Toast.makeText(context, "logged out", Toast.LENGTH_SHORT).show()
-            val prefs = requireContext().getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
+            val prefs =
+                requireContext().getSharedPreferences("MyPref", AppCompatActivity.MODE_PRIVATE)
             val editor = prefs.edit()
             editor.putBoolean("hasSignedInBefore", false).apply()
             val i = Intent(requireContext(), UserSignActivity::class.java)

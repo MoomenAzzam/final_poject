@@ -29,6 +29,7 @@ class SignUpFragment : Fragment() {
             //The button that when pressed saves the information of the new user
             if (binding.tvName.text.isNotEmpty() && binding.tvPassword.text.isNotEmpty()
                 && binding.tvRePassword.text.isNotEmpty() && binding.tvEmail.text.isNotEmpty()
+                && binding.tvdob.text.isNotEmpty()
             ) {
                 val username = binding.tvName.text.toString()
                 val email = binding.tvEmail.text.toString()
@@ -55,21 +56,22 @@ class SignUpFragment : Fragment() {
                     ).show()
                 }
 
-            } else
+            } else {
                 Toast.makeText(
-                    context,
+                    requireContext(),
                     "Please Fill in The Required Fields",
                     Toast.LENGTH_SHORT
                 ).show()
+            }
         }
 
 
-        binding.btnAddImgFromGallery.setOnClickListener{
+        binding.btnAddImgFromGallery.setOnClickListener {
             (requireActivity() as UserSignActivity).galleryBtn(binding.imgUser)
         }
 
 
-        binding.btnAddImgFromCamera.setOnClickListener{
+        binding.btnAddImgFromCamera.setOnClickListener {
             (requireActivity() as UserSignActivity).cameraBtn(binding.imgUser)
         }
 
@@ -80,16 +82,16 @@ class SignUpFragment : Fragment() {
             val year = calendar.get(Calendar.YEAR)
 
             // val formatter = SimpleDateFormat("d/M/yyyy EE", Locale.ENGLISH)
-            val datePicker = DatePickerDialog(requireContext(),{ _, y, m, d ->
-                binding.tvdob.setText("$y/${m+1}/$d")
-            },year,month,day)
+            val datePicker = DatePickerDialog(requireContext(), { _, y, m, d ->
+                binding.tvdob.setText("$y/${m + 1}/$d")
+            }, year, month, day)
             datePicker.show()
 
         }
 
 //******************************************************  signInLink  *********************************************
         // The text that the user will click on if they already have an account
-        binding.singInLink.setOnClickListener{
+        binding.singInLink.setOnClickListener {
             UserSignActivity.swipeFragment(requireActivity(), SignInFragment())
         }
 
