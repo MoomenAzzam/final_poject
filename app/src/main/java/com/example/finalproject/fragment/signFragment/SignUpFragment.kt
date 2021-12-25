@@ -36,11 +36,11 @@ class SignUpFragment : Fragment() {
                 val pass = binding.tvPassword.text.toString()
                 val rePass = binding.tvPassword.text.toString()
                 val dob = binding.tvdob.text.toString()
+                val bitmap = (binding.imgUser.drawable as BitmapDrawable).bitmap
 
                 //To check whether the password in the first field is the same as in the second field
                 if (pass == rePass) {
                     val db = DatabaseHelper(requireContext())
-                    val bitmap = (binding.imgUser.drawable as BitmapDrawable).bitmap
                     if (db.insertUser(username, email, pass, dob, bitmap)) {
                         Toast.makeText(context, "Register succeeded", Toast.LENGTH_SHORT).show()
                     } else {

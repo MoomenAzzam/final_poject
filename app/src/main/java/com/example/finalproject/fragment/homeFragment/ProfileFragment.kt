@@ -79,9 +79,9 @@ class ProfileFragment : Fragment() {
                     val personEmail = binding.tvEmail.text.toString()
                     val personDOB = binding.tvDOB.text.toString()
                     val personPassword = binding.tvPassword.text.toString()
+                    val bitmap = (binding.personImg.drawable as BitmapDrawable).bitmap
 
-                    val img = (binding.personImg.drawable as BitmapDrawable).bitmap
-                    db.updateUser(userId, personName, personEmail, personPassword, personDOB, img)
+                    db.updateUser(userId, personName, personEmail, personPassword, personDOB, bitmap)
                 } else
                     Toast.makeText(
                         context,

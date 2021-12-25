@@ -41,6 +41,10 @@ class BookDescriptionFragment : Fragment() {
         val binding = FragmentBookDescriptionBinding.inflate(inflater, container, false)
         val db = DatabaseHelper(requireContext())
 
+        //hide camera and gallery buttons
+        binding.btnAddImgFromCamera.visibility = View.INVISIBLE;
+        binding.btnAddImgFromGallery.visibility = View.INVISIBLE;
+
         val book = db.getBook(bookId!!)
         binding.bookName.setText(book.name)
         binding.spinnerCategory.setText(book.category)
@@ -108,6 +112,9 @@ class BookDescriptionFragment : Fragment() {
                 binding.releaseYear.isEnabled = true
                 binding.description.isEnabled = true
 
+                //Show camera and gallery buttons
+                binding.btnAddImgFromCamera.visibility = View.VISIBLE;
+                binding.btnAddImgFromGallery.visibility = View.VISIBLE;
 
             } else {
                 //pressed the save btn
@@ -122,6 +129,10 @@ class BookDescriptionFragment : Fragment() {
                 binding.NumberOfCopiesOfBooks.isEnabled = false
                 binding.releaseYear.isEnabled = false
                 binding.description.isEnabled = false
+
+                //hide camera and gallery buttons
+                binding.btnAddImgFromCamera.visibility = View.INVISIBLE;
+                binding.btnAddImgFromGallery.visibility = View.INVISIBLE;
 
                 if (binding.bookName.text.toString()
                         .isNotEmpty() && binding.spinnerCategory.text.toString().isNotEmpty() &&
@@ -145,10 +156,10 @@ class BookDescriptionFragment : Fragment() {
                         binding.NumberOfCopiesOfBooks.text.toString().toInt()
                     val releaseYear = binding.releaseYear.text.toString().toInt()
                     val description = binding.description.text.toString()
+                    val bitmap = (binding.imgBook.drawable as BitmapDrawable).bitmap
 
 
                     val db = DatabaseHelper(requireActivity())
-                    val bitmap = (binding.imgBook.drawable as BitmapDrawable).bitmap
                     if(db.updateBook(bookId!!, bookName, category, authorName, language, pagesNum, shelfNumber,
                         numberOfCopiesOfBooks, releaseYear, description, bitmap)){
                         Toast.makeText(requireContext(), "saved", Toast.LENGTH_SHORT).show()
@@ -166,11 +177,22 @@ class BookDescriptionFragment : Fragment() {
             }
         }
 
+
         binding.btnBorrowers.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView, BorrowerFragment.newInstance(bookId!!))
                 .commit()
         }
+
+
+        binding.btnAddImgFromCamera.setOnClickListener {
+            (requireActivity() as MainActivity).cameraBtn(binding.imgBook)
+        }
+
+        binding.btnAddImgFromGallery.setOnClickListener {
+            (requireActivity() as MainActivity).galleryBtn(binding.imgBook)
+        }
+
 
         binding.imgBook.setOnClickListener {
             (requireActivity() as MainActivity).cameraBtn(binding.imgBook)
