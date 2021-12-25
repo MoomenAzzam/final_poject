@@ -44,6 +44,7 @@ class BookDescriptionFragment : Fragment() {
         //hide camera and gallery buttons
         binding.btnAddImgFromCamera.visibility = View.INVISIBLE;
         binding.btnAddImgFromGallery.visibility = View.INVISIBLE;
+        //binding.bookName.setTextColor(resources.getColor(R.color.gray));
 
         //disable spinners
         binding.spinnerCategory.isEnabled = false
