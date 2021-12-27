@@ -211,10 +211,10 @@ class BookDescriptionFragment : Fragment() {
             (requireActivity() as MainActivity).galleryBtn(binding.imgBook)
         }
 
-
-        binding.imgBook.setOnClickListener {
-            (requireActivity() as MainActivity).cameraBtn(binding.imgBook)
-        }
+//
+//        binding.imgBook.setOnClickListener {
+//            (requireActivity() as MainActivity).cameraBtn(binding.imgBook)
+//        }
 
     }
 

@@ -239,7 +239,9 @@ class DatabaseHelper(context: Context) :
         var favorites = ArrayList<Book>()
         val c =
             db.rawQuery(
-                "select * from ${Favorite.TABLE_NAME} INNER JOIN ${Book.TABLE_NAME} ON (${Favorite.TABLE_NAME}.${Favorite.COL_BOOK_ID} = ${Book.TABLE_NAME}.${Book.COL_ID}) WHERE ${Favorite.COL_USER_ID} = $userId order by ${Favorite.COL_BOOK_ID} desc",
+                "select * from ${Favorite.TABLE_NAME} INNER JOIN ${Book.TABLE_NAME} ON " +
+                        "(${Favorite.TABLE_NAME}.${Favorite.COL_BOOK_ID} = ${Book.TABLE_NAME}.${Book.COL_ID}) " +
+                        "WHERE ${Favorite.COL_USER_ID} = $userId order by ${Favorite.COL_BOOK_ID} desc",
                 null
             )
         c.moveToFirst()
@@ -263,7 +265,7 @@ class DatabaseHelper(context: Context) :
     }
 
     fun isFavorite(userId: Int, bookId: Int): Boolean {
-        var favorites = ArrayList<Favorite>()
+        //var favorites = ArrayList<Favorite>()
         val c =
             db.rawQuery(
                 "select * from ${Favorite.TABLE_NAME} WHERE ${Favorite.COL_USER_ID} = $userId AND ${Favorite.COL_BOOK_ID} = $bookId",

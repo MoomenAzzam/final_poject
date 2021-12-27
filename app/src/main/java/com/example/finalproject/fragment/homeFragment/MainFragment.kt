@@ -78,9 +78,9 @@ class MainFragment : Fragment() {
 
         }
 
-        binding.root.setOnClickListener {
-            MainActivity.swipeFragment(requireActivity(), BookDescriptionFragment())
-        }
+//        binding.root.setOnClickListener {
+//            MainActivity.swipeFragment(requireActivity(), BookDescriptionFragment())
+//        }
 
     }
 
